@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<script src="scripts/search.js"></script>
+<head><script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<link rel="stylesheet" href="http://lvps87-230-14-183.dedicated.hosteurope.de/public/css/basic.css">
+    	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+	<script src="scripts/article.js"></script>
 </head>
 <body>
 
-<form action="search.js" method="post" enctype="multipart/form-data">
-    Suche:  
-    <input type="search" name="searchfunction" id="searchfunction" value="Suchbegriff eingheben">
-    <input type="submit" value="Suche" name="search">
+<script>
+	// set focus when modal is opened
+$('#modal-content').on('shown.bs.modal', function () {
+    $("#txtname").focus();
+});
+
+// show the modal onload
+$('#modal-content').modal({
+    show: true
+});
+
+// everytime the button is pushed, open the modal, and trigger the shown.bs.modal event
+$('#openBtn').click(function () {
+    $('#modal-content').modal({
+        show: true
+    });
+});
+
+
+</script>
+
+<form action="article.js" method="post" enctype="multipart/form-data">
+    <div class="panel panel-primary">Artikel erstellen</div>
+
+
 </form>
+
+
+<a href="#" class="btn btn-default" id="openBtn">Open modal</a>
+
+<div id="modal-content" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <input type="text" id="txtname" />
+                </p>
+            </div>
+            <div class="modal-footer"> 
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+                 <a href="#" class="btn btn-primary">Save changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html> 
