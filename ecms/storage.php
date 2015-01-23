@@ -1,25 +1,28 @@
 <?php require '_mysql.php'; ?>
 <h1>totalprint - STORAGE</h1>
 <?php
-	$tpStorageDir = "../tp_storage/";
-	dirLoop($tpStorageDir);
 
-	function dirLoop($directory){
-		$files = scandir($directory);
-		foreach ($files as $key => $value) {
-			if($value != "." && $value != ".."){
-				if(is_dir($directory.$value)){
-					echo 'DIR - ';
-					echo '<b>'.$value.'</b><br/>';
-					dirLoop($directory.$value);
-				} else {
-					echo 'FILE - ';
-					echo '<a href="'.$directory.$value.'"><b>'.$value.'</b></a><br/>';
-				}
-			}
-		}
+	$tpStorageDir = "../tp_storage/";
+
+	//DB
+	$con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
+	if (!$con) {
+	    die("<br/>Fehlgeschlagen: " . mysqli_connect_error());
 	}
 
+	$sql = 'USE '.DB;
+	if (mysqli_query($con, $sql)) {
+	} else {
+	    echo "<br/>Fehlgeschlagen: " . mysqli_error($con);
+	}
+
+	$sql = 'SELECT * FROM storage';
+	$result = mysqli_query($con, $sql);
+	if(mysqli_num_rows($result)>0){
+	    while($row = mysqli_fetch_assoc($result)) {
+	        echo '<a href="'.$tpStorageDir.$row['id'].'" download="'.$row['title'].'.'.$row['file_ext'].'">'.$row['title']. ' - ' . $row['file_ext'].'</a><br/>';
+	    }
+	}
 ?>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -30,5 +33,4 @@
 
 <?php 
 	if(isset($_GET['message'])) echo $_GET['message'];
-	echo DB_SERVER;
 ?>
