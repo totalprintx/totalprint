@@ -8,8 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 
-	<link rel="stylesheet" href="http://lvps87-230-14-183.dedicated.hosteurope.de/public/css/basic.css">
-	<script type="text/javascript" src="http://lvps87-230-14-183.dedicated.hosteurope.de/public/js/basic.js"></script>
+	<link rel="stylesheet" href="public/css/basic.css">
+	<script type="text/javascript" src="public/js/basic.js"></script>
 
 
 	<!-- Sripte -->
