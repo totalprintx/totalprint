@@ -1,13 +1,15 @@
 <!doctype html>
 <html>
 <head>
-	<title>Projektname</title>
+	<meta charset="utf-8">
+
+	<title>ECM</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 
-	<link rel="stylesheet" href="http://lvps87-230-14-183.dedicated.hosteurope.de/public/css/basic.css">
-	<script type="text/javascript" src="http://lvps87-230-14-183.dedicated.hosteurope.de/public/js/basic.js"></script>
+	<link rel="stylesheet" href="public/css/basic.css">
+	<script type="text/javascript" src="public/js/basic.js"></script>
 
 
 	<!-- Sripte -->
@@ -30,19 +32,8 @@
 	    </div>
         <div id="navbar" class="navbar-collapse collapse">
         	<ul class="nav navbar-nav">
-            	<li class="active"><a href="example1">Example 1 (active)</a></li>
-            	<li><a href="#example2">Example 2</a></li>
-            	<li><a href="<?php echo URL ?>chat">Chat</a></li>
-            	<li class="dropdown">
-	              	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Example Dropdown <span class="caret"></span></a>
-	              	<ul class="dropdown-menu" role="menu">
-		                <li><a href="#">Example 1</a></li>
-		                <li><a href="#">Example 2</a></li>
-		                <li><a href="#">Example 3</a></li>
-		                <li class="divider"></li>
-		                <li><a href="#">Example 4</a></li>
-	             	</ul>
-	            </li>
+            	<li class="active"><a href="articles">Artikel</a></li>
+            	<li><a href="documents">Dokumente</a></li>
 	        </ul>
 	        <ul class="nav navbar-nav navbar-right">
 	        	<li><a href="/profile">Profil</a></li>
