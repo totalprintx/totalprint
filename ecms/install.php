@@ -36,7 +36,20 @@ $sql = 'CREATE TABLE storage (
 		title VARCHAR(256) NOT NULL,
 		file_ext VARCHAR(10) NOT NULL,
 		author_id VARCHAR(50),
+		category_id INT,
 		upload_date TIMESTAMP
+		)';
+if (mysqli_query($con, $sql)) {
+    echo 'OK!';
+} else {
+    echo "<br/>Fehlgeschlagen: " . mysqli_error($con);
+}
+
+//storage Tabelle erstellen -TODO: author_id auf author id verlinken
+echo '<br/>Erstellt ECMS - Storage Kategorien...';
+$sql = 'CREATE TABLE category (
+		category_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		title VARCHAR(256) NOT NULL
 		)';
 if (mysqli_query($con, $sql)) {
     echo 'OK!';
