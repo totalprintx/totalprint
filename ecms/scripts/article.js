@@ -1,3 +1,4 @@
-function search() {
-	
-}
+////////// MarkItUp //////////////
+$(document).ready(function() {
+      $("#markItUp").markItUp(mySettings);
+   });
