@@ -5,10 +5,9 @@ define("DB_USER", "root");
 define("DB_PASSWORD", "");
 define("DB_DATABASE", "ecms");
 
-//$search = $_POST['searchedword'];
-$query="";
-$search = "testbegriff";
+$search = $_POST['searchbox'];
 $type = "document";
+$query;
 
 $tpStorageDir = "../tp_storage/";
 
@@ -19,8 +18,6 @@ $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE);
 	{
 		exit("Verbindungsfehler: ".mysqli_connect_error());
 	}
-
-echo("Verbindung mit der Datenbank hergestellt.");
 
 switch($type){ 
 	case "document":
