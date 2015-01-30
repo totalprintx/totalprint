@@ -1,3 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Dokumentenverwaltung</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+	<link rel="stylesheet" href="ecms/css/filemanager.css">
+	<script type="text/javascript" src="ecms/jquery/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="ecms/jquery/jquery-2.1.3.min.js"></script>
+
+</head>
+<body>
 <div class="jumbotron">
 	<div id="filemanager" class="panel panel-primary">
         <div class="panel-heading">
@@ -10,7 +26,7 @@
     					<form action="ecms/search_function.php" method="post" enctype="multipart/form-data" class="input-group">
       						<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Suchbegriff eingeben..." onFocus="this.value=''">
       						<span class="input-group-btn">
-        						<button class="btn btn-default" type="submit">Go!</button>
+        						<button class="btn btn-default" type="submit">Go!<!-- <i class="icon-search" title="Search"></i> --></button>
       						</span>
 	    				</form>
     				</div>
@@ -18,44 +34,16 @@
   			</div>
   	 	</div>
       	<div id="main" class="panel-body">
-        	<div id="tree" class="panel panel-primary">
+        	<div id="explorer" class="panel panel-primary">
         		<div class="panel-heading">
-        			<h3 class="panel-title">Archiv</h3>
+        			<h3 class="panel-title">Dateiexplorer</h3>
         		</div>
-        		<div class="panel-body">
-        			Content
+        		<div class="panel-body container">
+        			<div class="row">
+						<div class="col-sm-6" id="tree">Content</div>
+						<div class="col-sm-6" id="content">Content</div>
+					</div>
         		</div>
-        	</div>
-        	<div id="content" class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Dateien</h3>
-        		</div>
-        		<div class="panel-body">
-        			Content
-        		</div>
-        		<div id="filemanager_footer" class="panel-footer">
-        			<center>
-	        			<nav id="pagenav">
-	    					<ul class="pagination">
-	    						<li>
-			      					<a href="#" aria-label="Previous">
-			        					<span aria-hidden="true">&laquo;</span>
-			      					</a>
-			   					</li>
-			    				<li class="active"><a href="#">1</a></li>
-			    				<li><a href="#">2</a></li>
-			    				<li><a href="#">3</a></li>
-			    				<li><a href="#">4</a></li>
-			    				<li><a href="#">5</a></li>
-			    				<li>
-			      					<a href="#" aria-label="Next">
-			        					<span aria-hidden="true">&raquo;</span>
-			      					</a>
-			    				</li>
-			    			</ul>
-						</nav>
-					</center>
-		        </div>
         	</div>
         	<div id="options">
         		<div id="file_upload" class="panel panel-primary">
@@ -78,3 +66,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>
