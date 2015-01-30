@@ -40,7 +40,13 @@
                 <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp">Text</textarea></div>
 
                 <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
-                <div class="col-sm-9 col-md-6 col-lg-8">Bildupload...</div>
+                <div class="col-sm-9 col-md-6 col-lg-8">
+                    <form enctype="multipart/form-data" action="<?php echo htmlspecialchars ($_SERVER['PHP_SELF']); ?>" method="post">
+                        <input type="hidden" name="max_file_size" value="1000">
+                        <input name="thefile" type="file">
+                        <input type="submit" value="senden">
+                    </form>
+                </div>
             </div>
 
             <div  style="text-align:center;"><input type="button" name="publish" value="ver&ouml;ffentlichen" onclick="this.form.textfeld.value='Ich bin Text 2 - ganz normal'"></div>
