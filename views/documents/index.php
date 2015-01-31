@@ -5,12 +5,22 @@
 
 	<title>Dokumentenverwaltung</title>
 
+    <script type="text/javascript" src="ecms/jquery/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="ecms/jquery/jquery.easyui.min.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 
 	<link rel="stylesheet" href="ecms/css/filemanager.css">
-	<script type="text/javascript" src="ecms/jquery/jquery.layout-latest.js"></script>
-	<script type="text/javascript" src="ecms/jquery/jquery-2.1.3.min.js"></script>
+
+	<script type="text/javascript" src="ecms/jquery/jquery.js"></script>
+	<script type="text/javascript" src="ecms/jquery/jquery.layout.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#splitcontainer").layout({ applyDemoStyles: true });
+		});
+	</script>
 
 </head>
 <body>
@@ -38,10 +48,26 @@
         		<div class="panel-heading">
         			<h3 class="panel-title">Dateiexplorer</h3>
         		</div>
-        		<div class="panel-body container">
-        			<div class="row">
-						<div class="col-sm-6" id="tree">Content</div>
-						<div class="col-sm-6" id="content">Content</div>
+        		<div id="splitcontainer" class="panel-body">
+        			<div id="splitleft" class="ui-layout-west"></div>
+					<div id="splitright" class="ui-layout-center">
+						
+						<table id="tt" class="easyui-datagrid" style="width:525px;height:560px"
+            				url="datagrid8_getdata.php"
+            				sortName="Titel" sortOrder="asc"
+            				rownumbers="false" pagination="true">
+        					<thead>
+            					<tr>
+                					<th field="icon" width="30" sortable="true">Icon</th>
+                					<th field="title" width="120" sortable="true" sortable="true">Titel</th>
+					                <th field="filetype" width="50" align="right" sortable="true">Dateityp</th>
+					                <th field="category" width="100" align="center" sortable="true">Kategorie</th>
+					                <th field="author" width="80" align="right" sortable="true">Autor</th>
+					                <th field="creationdate" width="120" sortable="true">Erstellungsdatum</th>
+					            </tr>
+					        </thead>
+					    </table>
+
 					</div>
         		</div>
         	</div>
