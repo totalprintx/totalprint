@@ -11,13 +11,18 @@
 	<link rel="stylesheet" href="public/css/basic.css">
 	<script type="text/javascript" src="public/js/basic.js"></script>
 
-
 	<!-- Sripte -->
 	<?php 
 		foreach ($this->js as $key => $value) {
 			echo '<script type="text/javascript" src="' . URL . 'public/js/' . $value. '"></script>';
 		}
 	?>
+	
+	<script type="text/javascript" src="libs/jquery/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="libs/jquery/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
+	<script type="text/javascript" src="libs/jquery/jquery.layout.js"></script>
+	
 </head>
 <body>
 	<?php Session::init(); ?>

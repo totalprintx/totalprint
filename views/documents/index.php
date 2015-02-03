@@ -5,16 +5,10 @@
 
 	<title>Dokumentenverwaltung</title>
 
-    <script type="text/javascript" src="ecms/jquery/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="ecms/jquery/jquery.easyui.min.js"></script>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 
 	<link rel="stylesheet" href="ecms/css/filemanager.css">
-
-	<script type="text/javascript" src="ecms/jquery/jquery.js"></script>
-	<script type="text/javascript" src="ecms/jquery/jquery.layout.js"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
