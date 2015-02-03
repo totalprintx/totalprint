@@ -18,14 +18,14 @@ class View {
 		}
 	}
 	public function getSystemInfo() {
-/*		$db = new Database();
-        $dataStatement = $db->prepare
-            ('SELECT * From systems');        
-        $dataStatement->execute(array());
+		$db = new Database();
+		$dataStatement = $db->prepare
+				('SELECT * From systems');        
+		$dataStatement->execute(array());
 
-        $data = $dataStatement->fetchAll();
+		$data = $dataStatement->fetchAll();
 
-        return $data;*/
+		return $data;
 	}
 
 	public function checkIfActivePage($requestUri)

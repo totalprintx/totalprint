@@ -1,3 +1,3 @@
 <?php
 
-define('URL', 'http://localhost/test/');
+define('URL', 'http://localhost/totalprint/');
