@@ -4,6 +4,7 @@ class View {
 	function __construct() {
 		$this->js = array();
 		$this->systems = $this->getSystemInfo();
+		$this->articles = $this->getArticles();
 	}
 
 	public function render($name, $noInclude = false)
@@ -18,13 +19,22 @@ class View {
 		}
 	}
 	public function getSystemInfo() {
-		$db = new Database();
-		$dataStatement = $db->prepare
-				('SELECT * From systems');        
+		$db = new DatabaseTP();
+		$dataStatement = $db->prepare('SELECT * From systems');        
 		$dataStatement->execute(array());
 
 		$data = $dataStatement->fetchAll();
 
+		return $data;
+	}
+	
+	public function getArticles() {
+		$db = new DatabaseEcms();
+		$dataStatement = $db->prepare('SELECT * FROM article');
+		$dataStatement->execute(array());
+		
+		$data = $dataStatement->fetchAll();
+		
 		return $data;
 	}
 
