@@ -48,7 +48,7 @@
 	<div class="system-nav">
 		<ul>
 			<?php foreach ($this->systems as $key => $value) {
-				echo '<li><a href="'. $value["link"] .'" title="'. $value["name"] .'">'. $value["shortcut"] .'</a></li>';
+				echo '<li><a href="'. $value["link"] .'" title="'. $value["name"] .'">'. $value["abbreviation"] .'</a></li>';
 			} ?>
 		</ul>
 	</div>
