@@ -23,33 +23,26 @@
 		</div>
 	</div>
 	<div id="main" class="panel-body">
-		<table class="table" border="1">
-			<thead>
+		<table 	id="tt" 
+						class="easyui-datagrid" 
+						style="width:100%;height:96%"
+						url="search_function.php"
+            sortName="Titel" sortOrder="asc"
+            rownumbers="false" pagination="true">
+      <thead>
 				<tr>
-					<th>
-						Nr.
-					</th>
-					<th>
-						Titel
-					</th>
-					<th>
-						Verfasser
-					</th>
-					<th>
-						Erstellt
-					</th>
-					<th>
-						Veröffentlicht
-					</th>
-					<th>
-						Zuletzt bearbeitet
-					</th>
+					<th field="id" width="5%" sortable="true">Nr.</th>
+					<th field="title" width="25%" sortable="true" sortable="true">Titel</th>
+					<th field="author" width="10%" align="right" sortable="true">Verfasser</th>
+					<th field="created" width="20%" align="center" sortable="true">Erstellt</th>
+					<th field="published" width="20%" align="right" sortable="true">Veröffentlicht</th>
+					<th field="lastEdited" width="20%" sortable="true">Zuletzt bearbeitet</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
 					foreach ($this->articles as $key => $value) {
-						echo '<tr><td>'.$value["id"].'</td><td>'.$value["title"].'</td><td>'.$value["author"].'</td><td>'.$value["createDate"].'</td><td>'.$value["editDate"].'</td><td>'.$value["publishDate"].'</td></tr>';
+						echo '<tr><td>'.$value["id"].'</td><td>'.$value["titel"].'</td><td>'.$value["verfasser_id"].'</td><td>'.$value["erstellt"].'</td><td>'.$value["veroeffentlicht"].'</td><td>'.$value["bearbeitet"].'</td></tr>';
 					} 
 				?>
 			</tbody>
