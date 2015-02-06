@@ -20,42 +20,42 @@
 <body>
     <h1>Artikel erstellen </h1>
 
+    <form action="articles/saveArticle" method="post">
     <!-- OPEN POPUP -->
     <button><a href="#" class="popup_oeffnen">Popup &ouml;ffnen</a></button>
     
-    <div id="popup">
-    
-        <div class="schliessen">X</div>
+        <div id="popup">
         
-        <div id="popup_inhalt">
-            <h2 align="center">Artikel erstellen</h2>
-            <div class="row">
-                <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
-                <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%;"></div>
-                
-                <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
-                <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%;"></div>
+            <div class="schliessen">X</div>
+            
+            <div id="popup_inhalt">
+                <h2 align="center">Artikel erstellen</h2>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%;"></div>
+                        
+                        <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%;"></div>
 
-                <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-                <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp">Text</textarea></div>
+                        <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="text"></textarea></div>
 
-                <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
-                <div class="col-sm-9 col-md-6 col-lg-8">
-                    <form enctype="multipart/form-data" action="<?php echo htmlspecialchars ($_SERVER['PHP_SELF']); ?>" method="post">
-                        <input type="hidden" name="max_file_size" value="1000">
-                        <input name="thefile" type="file">
-                        <input type="submit" value="senden">
-                    </form>
-                </div>
+                        <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8">
+                            <!--<form enctype="multipart/form-data" action="articles/savePicture" method="post">
+                                <input type="hidden" name="max_file_size" value="1000">
+                                <input name="thefile" type="file">
+                                <input type="submit" value="senden">
+                            </form>-->
+                        </div>
+                    </div>
+                    <div  style="text-align:center;">
+                        <button type="submit" id="publish">vero&uml;ffentlichen</button>
+                    </div>
             </div>
-
-            <div  style="text-align:center;"><input type="button" name="publish" value="ver&ouml;ffentlichen" onclick="this.form.textfeld.value='Ich bin Text 2 - ganz normal'"></div>
-
         </div>
-        
-    </div>
+    </form>
     
     <div id="hintergrund"></div>
-</div>
 </body>
 </html> 
