@@ -23,6 +23,13 @@
   -moc-border-radius: 5;
 }
 
+#splitright .panel-body {
+  padding: 0 !important;
+}
+#splitright {
+  padding: 0 !important;
+}
+
 #options {
 	width: 20%;
 	height: 100%;

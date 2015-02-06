@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	$("#splitcontainer").layout({ applyDemoStyles: true });
+	if (document.getElementById('splitcontainer') != null)
+	    $("#splitcontainer").layout({ applyDemoStyles: true });
 });
 
 function searchRequest(){
