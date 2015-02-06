@@ -13,24 +13,25 @@ $(function(){
 
 });
 
+function loadFiles(){
+	alert("fileload for ");
+}
+
 function generateDirList(resultData){
 	//Dir Ordnung
 	while(true){
 		var tempArr = [];
 
 		$.each(resultData, function(){
-			if(this.title == "abc"){
-				alert("ABC!!!!");
-			}
 			if(this.parent_id == null){
-				$('#dirlist').append('<li id="'+this.dir_id+'">'+this.title+'</li>');
+				$('#dirlist').append('<li id="'+this.dir_id+'"><a href="#">'+this.title+'</a></li>');
 			} else if($('#' + this.parent_id).length) {
 
 				if($('#' + this.parent_id + ':has(ul)').length){
-					$('#' + this.parent_id).find("ul").append('<li id="'+this.dir_id+'">'+this.title+'</li>');
+					$('#' + this.parent_id).find("ul:first").append('<li id="'+this.dir_id+'"><a href="#">'+this.title+'</a></li>');
 				} else {
 					$('#' + this.parent_id)
-						.append('<ul><li id="'+this.dir_id+'">'+this.title+'</li></ul>')
+						.append('<ul><li id="'+this.dir_id+'"><a href="#">'+this.title+'</a></li></ul>')
 	/*					.click(function(event){
 							if (this == event.target) {
 								$(this).css('list-style-image',
@@ -54,6 +55,28 @@ function generateDirList(resultData){
 	}
 
 	//Toggle
+/*	$('#dirlist').find("li:has(ul)").find("a:first")
+		.click(function(event){
+			if(this == event.target){
+				alert(this.parentElement.id);
+			}
+		})
+		.css({background:'red'})
+		;*/
+
+	//others
+	$('#dirlist').find("li:not(:has(ul))").find("a")
+		.click(function(event){
+			if(this == event.target){
+				alert(this.parentElement.id);
+			}
+		})
+		.prepend('<img src="dot.png"/>')
+		.css({background:'red'})
+		;
+
+
+
 /*	$('#dirlist').find("li:has(ul)")
 		.click(function(event){
 			if (this == event.target) {
@@ -68,7 +91,7 @@ function generateDirList(resultData){
 
 
 		// cp
-
+/*
 				$('li')
 			.css('pointer','default')
 			.css('list-style-image','none');
@@ -77,11 +100,11 @@ function generateDirList(resultData){
 				if (this == event.target) {
 					$(this).css('list-style-image',
 						(!$(this).children().is(':hidden')) ? 'url(closed.png)' : 'url(opened.png)');
-					$(this).children().toggle('slow');
+					$(this).children().toggle();
 				}
 				return false;
 			})
 			.css({cursor:'pointer', 'list-style-image':'url(closed.png)'})
 			.children().hide();
-		$('li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
+		$('li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});*/
 }
