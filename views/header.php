@@ -11,6 +11,13 @@
 	<link rel="stylesheet" href="public/css/basic.css">
 	<script type="text/javascript" src="public/js/basic.js"></script>
 
+	<!-- scripts und styles laden-->
+	<script type="text/javascript" src="ecms/jquery/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="ecms/jquery/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" href="ecms/css/filemanager.css">
+    <script type="text/javascript" src="ecms/jquery/jquery.js"></script>
+	<script type="text/javascript" src="ecms/jquery/jquery.layout.js"></script>
+
 
 	<!-- Sripte -->
 	<?php 
