@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#splitcontainer").layout({ applyDemoStyles: true });
-    });
-</script>
-
 <div id="filemanager" class="panel panel-primary">
     <div class="panel-heading">
         <div class="panel-title row">
@@ -48,7 +42,6 @@
 					        </tr>
 					    </thead>
 					</table>
-
 				</div>
         	</div>
         </div>

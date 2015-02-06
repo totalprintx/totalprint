@@ -31,6 +31,10 @@
     <input type="submit" value="Upload Image" name="submit">
 </form>
 
+<div id="categories">
+Kategorien:<br/>
+</div>
+
 <?php 
 	if(isset($_GET['message'])) echo $_GET['message'];
 ?>

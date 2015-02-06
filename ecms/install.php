@@ -46,10 +46,11 @@ if (mysqli_query($con, $sql)) {
 }
 
 //storage Tabelle erstellen -TODO: author_id auf author id verlinken
-echo '<br/>Erstellt ECMS - Storage Kategorien...';
-$sql = 'CREATE TABLE category (
-		category_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		title VARCHAR(256) NOT NULL
+echo '<br/>Erstellt ECMS - Storage Directory...';
+$sql = 'CREATE TABLE directories (
+		dir_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		title VARCHAR(256) NOT NULL,
+		parent_id INT
 		)';
 if (mysqli_query($con, $sql)) {
     echo 'OK!';

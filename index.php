@@ -7,7 +7,8 @@ require 'libs/Model.php';
 require 'libs/View.php';
 
 // Library
-require 'libs/Database.php';
+require 'libs/DatabaseTP.php';
+require 'libs/DatabaseEcms.php';
 require 'libs/Session.php';
 
 require 'config/paths.php';
