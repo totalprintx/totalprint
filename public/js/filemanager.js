@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	$("#splitcontainer").layout({ applyDemoStyles: true });
+});
+
 function searchRequest(){
 
 	var searchData = $('#searchbar').val();
