@@ -9,37 +9,18 @@
 
 #explorer {
 	width: 78%;
-	height: 650px;
+	height: 100%;
 	float: left;
 }
 
 #splitcontainer {
-   height: 98.8%;
-   width: 104%; //or any percentage width you want
-   padding: 50px;
-   border: none;
-   margin-top: -15px;
-   margin-left:-15px;
-   margin-right: -20px;
-   margin-bottom: -30px;
-}
-
-#tree {
-	width: 20%;
-	height: 100%;
-	float: left;
-	border: hidden;
-	margin-left: 1%;
-	margin-right: 1%;
-}
-
-#content {
-	width: 54%;
-	height: 100%;
-	float: left;
-	border: hidden;
-	margin-left: 1%;
-	margin-right: 1%;
+  height: 94.3%;
+  width: 100%; //or any percentage width you want
+  margin:0;
+  padding:0;
+  border-radius: 5px;
+  -webkit-border-radius: 5;
+  -moc-border-radius: 5;
 }
 
 #options {

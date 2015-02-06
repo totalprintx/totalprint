@@ -9,7 +9,7 @@
     				<form action="ecms/search_function.php" method="post" enctype="multipart/form-data" class="input-group">
       					<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Suchbegriff eingeben..." onFocus="this.value=''">
       					<span class="input-group-btn">
-        					<button class="btn btn-default" type="submit">Go!<!-- <i class="icon-search" title="Search"></i> --></button>
+        					<button class="btn btn-default" type="submit">Go!</button>
       					</span>
 	    			</form>
     			</div>
@@ -25,20 +25,19 @@
         		<div id="splitleft" class="ui-layout-west">
                     
                 </div>
-				<div id="splitright" class="ui-layout-center">
-						
-					<table id="tt" class="easyui-datagrid" style="width:525px;height:560px"
+				<div id="splitright" class="ui-layout-center">	
+					<table id="tt" class="easyui-datagrid" style="width:100%;height:96%"
             			url="search_function.php"
             			sortName="Titel" sortOrder="asc"
             			rownumbers="false" pagination="true">
         				<thead>
             				<tr>
-                				<th field="icon" width="30" sortable="true">Icon</th>
-                				<th field="title" width="120" sortable="true" sortable="true">Titel</th>
-					            <th field="filetype" width="50" align="right" sortable="true">Dateityp</th>
-					            <th field="category" width="100" align="center" sortable="true">Kategorie</th>
-					            <th field="author" width="80" align="right" sortable="true">Autor</th>
-					            <th field="creationdate" width="120" sortable="true">Erstellungsdatum</th>
+                				<th field="icon" width="5%" sortable="true">Icon</th>
+                				<th field="title" width="25%" sortable="true" sortable="true">Titel</th>
+					            <th field="filetype" width="10%" align="right" sortable="true">Dateityp</th>
+					            <th field="category" width="20%" align="center" sortable="true">Kategorie</th>
+					            <th field="author" width="20%" align="right" sortable="true">Autor</th>
+					            <th field="creationdate" width="20%" sortable="true">Erstellungsdatum</th>
 					        </tr>
 					    </thead>
 					</table>
@@ -54,7 +53,7 @@
         			Content
         		</div>
         	</div>
-        	<div id="file_details" class="panel panel-primary">
+        	<div id="" class="panel panel-primary">
         		<div class="panel-heading">
         			<h3 class="panel-title">Details</h3>
         		</div>
@@ -65,4 +64,3 @@
         </div>
     </div>
 </div>
-
