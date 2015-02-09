@@ -30,7 +30,7 @@ class View {
 	
 	public function getArticles() {
 		$db = new DatabaseEcms();
-		$dataStatement = $db->prepare('SELECT * FROM article');
+		$dataStatement = $db->prepare('SELECT * FROM artikel');
 		$dataStatement->execute(array());
 		
 		$data = $dataStatement->fetchAll();
