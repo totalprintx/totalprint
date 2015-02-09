@@ -65,13 +65,13 @@
 			</div>
 		</div>
 	</div>
-	<div id="main" class="panel-body">
+	<div id="main" class="panel-body" style="height:auto">
 		<table 	id="tt" 
 						class="easyui-datagrid" 
-						style="width:100%;height:96%"
+						style="width:100%"
 						url="search_function.php"
             sortName="Titel" sortOrder="asc"
-            rownumbers="false" pagination="true"
+            rownumbers="false" pagination="false"
 						singleSelect="true">
       <thead>
 				<tr>
@@ -87,6 +87,10 @@
 				<?php 
 					foreach ($this->articles as $key => $value) {
 						echo '<tr><td>'.$value["id"].'</td><td>'.$value["titel"].'</td><td>'.$value["verfasser_id"].'</td><td>'.$value["erstellt"].'</td><td>'.$value["veroeffentlicht"].'</td><td>'.$value["bearbeitet"].'</td></tr>';
+					}
+					
+					for ($i = 2; $i <= 50; $i++) {
+						echo '<tr><td>'.$i.'</td><td>Isis überfällt Streichelzoo</td><td>A. Uthor</td><td>2015-01-01</td><td>2015-01-03</td><td>2015-01-01</td></tr>';
 					} 
 				?>
 			</tbody>
