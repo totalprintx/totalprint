@@ -13,9 +13,9 @@
 
 			$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht)');
 			$statement->execute(array(
-				':titel' => data['titel'],
+				':titel' => $data['titel'],
 				':verfasser_id' => '1',	//abfragen
-				':text' => data['text'],
+				':text' => $data['text'],
 				':veroeffentlicht' => 1,
 			));
 		}
