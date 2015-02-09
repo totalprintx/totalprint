@@ -76,11 +76,11 @@
       <thead>
 				<tr>
 					<th field="id" width="5%" sortable="true">Nr.</th>
-					<th field="title" width="25%" align="left" sortable="true">Titel</th>
-					<th field="author" width="10%" align="left" sortable="true">Verfasser</th>
-					<th field="created" width="20%" align="left" sortable="true">Erstellt</th>
-					<th field="published" width="20%" align="left" sortable="true">Veröffentlicht</th>
-					<th field="lastEdited" width="20%" align="left" sortable="true">Zuletzt bearbeitet</th>
+					<th field="title" width="40%" sortable="true">Titel</th>
+					<th field="author" width="25%" sortable="true">Verfasser</th>
+					<th field="created" width="10%" sortable="true">Erstellt</th>
+					<th field="published" width="10%" sortable="true">Veröffentlicht</th>
+					<th field="lastEdited" width="10%" sortable="true">Zuletzt bearbeitet</th>
 				</tr>
 			</thead>
 			<tbody>

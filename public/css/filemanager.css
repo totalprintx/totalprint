@@ -119,7 +119,11 @@
   float: left;
   width: 10000px;
 }
-.datagrid-header-row,
+.datagrid-header-row {
+	height: 30px;
+	background-color: #337AB7;
+	color: white;
+}
 .datagrid-row {
   height: 25px;
 }
@@ -148,7 +152,7 @@
   height: auto;
 }
 .datagrid-header .datagrid-cell span {
-  font-size: 12px;
+  font-size: 14px;
 }
 .datagrid-cell-group {
   text-align: center;
