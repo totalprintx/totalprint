@@ -9,9 +9,6 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
 <form action="articles/saveArticle" method="post">
-    <!-- OPEN POPUP -->
-    <button><a href="#" class="popup_oeffnen">Popup &ouml;ffnen</a></button>
-
     <div id="popup">
     
         <div class="schliessen">X</div>
@@ -52,7 +49,8 @@
 			</div>
 			<div class="col-md-4">
 				<div class="col-md-4">
-				<button class="btn btn-default" type="submit" style="float:right">Artikel erstellen</button>
+				<!-- OPEN POPUP -->
+				<button class="btn btn-default popup_oeffnen" type="submit" style="float:right">Neuen Artikel erstellen</button>
 				</div>
 				<div class="col-md-8">
 					<div class="input-group" style='float:right'>
@@ -73,7 +71,8 @@
 						style="width:100%;height:96%"
 						url="search_function.php"
             sortName="Titel" sortOrder="asc"
-            rownumbers="false" pagination="true">
+            rownumbers="false" pagination="true"
+						singleSelect="true">
       <thead>
 				<tr>
 					<th field="id" width="5%" sortable="true">Nr.</th>
