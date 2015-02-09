@@ -31,6 +31,10 @@ class View {
 	public function getArticles() {
 		$db = new DatabaseEcms();
 		$dataStatement = $db->prepare('SELECT * FROM artikel');
+		/*$dataStatement = $db->prepare('	SELECT ecm.artikel.id, titel, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
+																		FROM ecm.artikel, erp.mitarbeiter, erp.person
+																		WHERE ecm.artikel.id = erp.mitarbeiter.id AND erp.mitarbeiter.person_id = erp.person.id');
+		*/
 		$dataStatement->execute(array());
 		
 		$data = $dataStatement->fetchAll();

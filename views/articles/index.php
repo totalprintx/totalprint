@@ -8,12 +8,6 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/skins/markitup/style.css" />
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
-<form action="articles/saveData" method="post">
-	<label for="example1">Test</label>
-	<input type="text" name="example" id="example1">
-	<button type="submit">Senden</button>
-</form>
-
 <form action="articles/saveArticle" method="post">
     <!-- OPEN POPUP -->
     <button><a href="#" class="popup_oeffnen">Popup &ouml;ffnen</a></button>
