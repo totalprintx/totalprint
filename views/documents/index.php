@@ -25,7 +25,7 @@
         		<div id="splitleft" class="ui-layout-west">
                     
                 </div>
-				<div id="splitright" class="ui-layout-center">	
+				<div id="splitright" class="ui-layout-center">
 					<table id="tt" class="easyui-datagrid" style="width:100%;height:96%"
             			url="search_function.php"
             			sortName="Titel" sortOrder="asc"

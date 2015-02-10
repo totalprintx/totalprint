@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	if (document.getElementById('splitcontainer') != null)
-	    $("#splitcontainer").layout({ applyDemoStyles: true });
+	    $("#splitcontainer").layout({ applyDemoStyles: true});
 });
 
 function searchRequest(){
