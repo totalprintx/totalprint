@@ -11,15 +11,15 @@
 	<link rel="stylesheet" href="public/css/basic.css">
 	<script type="text/javascript" src="public/js/basic.js"></script>
 
-	<!-- Sripte -->
 	<?php 
 		foreach ($this->js as $key => $value) {
 			echo '<script type="text/javascript" src="' . URL . 'public/js/' . $value. '"></script>';
 		}
 	?>
-	
-	<script type="text/javascript" src="libs/jquery/jquery-1.4.4.min.js"></script>
-  <script type="text/javascript" src="libs/jquery/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" href="public/css/filemanager.css">
+	<script type="text/javascript" src="public/js/filemanager.js"></script>
+	<script type="text/javascript" src="libs/jquery/jquery-2.1.3.min.js"></script>
+  	<script type="text/javascript" src="libs/jquery/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery.layout.js"></script>
 	
@@ -48,7 +48,7 @@
 	<div class="system-nav">
 		<ul>
 			<?php foreach ($this->systems as $key => $value) {
-				echo '<li><a href="'. $value["link"] .'" title="'. $value["name"] .'">'. $value["shortcut"] .'</a></li>';
+				echo '<li><a href="'. $value["link"] .'" title="'. $value["name"] .'">'. $value["abbreviation"] .'</a></li>';
 			} ?>
 		</ul>
 	</div>

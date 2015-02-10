@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../../ecms/jquery/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="../../ecms/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../ecms/bootstrap/css/bootstrap-theme.min.css">
+<script src="../../ecms/bootstrap/js/bootstrap.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../../public/css/popup.css"/>
+<script src="../../public/js/popup.js"></script>
+<script src="../../public/js/article.js"></script>
+
+<!-- MARKTITUP -->
+<script type="text/javascript" src="../../public/MarkItUp/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="../../public/MarkItUp/markitup/sets/default/set.js"></script>
+<link rel="stylesheet" type="text/css" href="../../public/MarkItUp/markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" href="../../public/MarkItUp/markitup/sets/default/style.css" />
+
+</head>
+
+<body>
+    <h1>Artikel erstellen </h1>
+
+    <form action="articles/saveArticle" method="post">
+    <!-- OPEN POPUP -->
+    <button><a href="#" class="popup_oeffnen">Popup &ouml;ffnen</a></button>
+    
+        <div id="popup">
+        
+            <div class="schliessen">X</div>
+            
+            <div id="popup_inhalt">
+                <h2 align="center">Artikel erstellen</h2>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%;"></div>
+                        
+                        <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%;"></div>
+
+                        <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="text"></textarea></div>
+
+                        <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
+                        <div class="col-sm-9 col-md-6 col-lg-8">
+                            <!--<form enctype="multipart/form-data" action="articles/savePicture" method="post">
+                                <input type="hidden" name="max_file_size" value="1000">
+                                <input name="thefile" type="file">
+                                <input type="submit" value="senden">
+                            </form>-->
+                        </div>
+                    </div>
+                    <div  style="text-align:center;">
+                        <button type="submit" id="publish">vero&uml;ffentlichen</button>
+                    </div>
+            </div>
+        </div>
+    </form>
+    
+    <div id="hintergrund"></div>
+</body>
+</html> 
