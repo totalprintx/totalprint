@@ -22,4 +22,4 @@ define('DB_ECMS_TYPE', 'mysql');
 define('DB_ECMS_HOST', 'localhost');
 define('DB_ECMS_NAME', 'ecms');
 define('DB_ECMS_USER', 'root');
-define('DB_ECMS_PASS', '');*/
+define('DB_ECMS_PASS', '');
