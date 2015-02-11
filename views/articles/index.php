@@ -44,14 +44,18 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<div class="panel-title row">
+		
 			<div class="col-md-8">
-				<div id="title"><h4><b>Artikel</b></h4></div>
+					<div id="title"><h4><b>Artikel</b></h4></div>
 			</div>
+			
 			<div class="col-md-4">
+			
 				<div class="col-md-4">
-				<!-- OPEN POPUP -->
-				<button class="btn btn-default popup_oeffnen" type="submit" style="float:right">Neuen Artikel erstellen</button>
+					<!-- OPEN POPUP -->
+					<button class="btn btn-default popup_oeffnen" type="submit" style="float:right">Neuen Artikel erstellen</button>
 				</div>
+				
 				<div class="col-md-8">
 					<div class="input-group" style='float:right'>
 						<form action="ecms/search_function.php" method="post" enctype="multipart/form-data" class="input-group">
@@ -62,38 +66,46 @@
 						</form>
 					</div>
 				</div>
+				
 			</div>
+			
 		</div>
 	</div>
 	<div id="main" class="panel-body" style="height:auto">
-		<table 	id="tt" 
+		
+		<style>
+			.chooser {
+				cursor: pointer;
+				size: 5;
+				font-weight: bold;
+			}
+		</style>
+		
+		<div class="col-md-6">
+			<div class="chooser" id="chooser_newestArticles" align="right" style="color:#337AB7">Neueste Artikel</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="chooser" id="chooser_myArticles" style="color:grey">Meine Artikel</div>
+		</div>
+		
+		<table 	id="dg_articles" 
 						class="easyui-datagrid" 
 						style="width:100%"
-						url="search_function.php"
-            sortName="Titel" sortOrder="asc"
-            rownumbers="false" pagination="false"
+						url="articles/loadArticles"
+						method="get"
+						rownumbers="false" pagination="false"
 						singleSelect="true">
       <thead>
 				<tr>
 					<th field="id" width="5%" sortable="true">Nr.</th>
-					<th field="title" width="40%" sortable="true">Titel</th>
-					<th field="author" width="25%" sortable="true">Verfasser</th>
-					<th field="created" width="10%" sortable="true">Erstellt</th>
-					<th field="published" width="10%" sortable="true">Veröffentlicht</th>
-					<th field="lastEdited" width="10%" sortable="true">Zuletzt bearbeitet</th>
+					<th field="titel" width="40%" sortable="true">Titel</th>
+					<th field="verfasser" width="19%" sortable="true">Verfasser</th>
+					<th field="erstellt" width="12%" sortable="true">Erstellt</th>
+					<th field="veroeffentlicht" width="12%" sortable="true">Veröffentlicht</th>
+					<th field="bearbeitet" width="12%" sortable="true">Zuletzt bearbeitet</th>
 				</tr>
-			</thead>
-			<tbody>
-				<?php 
-					foreach ($this->articles as $key => $value) {
-						echo '<tr><td>'.$value["id"].'</td><td>'.$value["titel"].'</td><td>'.$value["verfasser_id"].'</td><td>'.$value["erstellt"].'</td><td>'.$value["veroeffentlicht"].'</td><td>'.$value["bearbeitet"].'</td></tr>';
-					}
-					
-					for ($i = 2; $i <= 50; $i++) {
-						echo '<tr><td>'.$i.'</td><td>Isis überfällt Streichelzoo</td><td>A. Uthor</td><td>2015-01-01</td><td>2015-01-03</td><td>2015-01-01</td></tr>';
-					} 
-				?>
-			</tbody>
+			</thead>			
 		</table>
 	</div>
 </div>

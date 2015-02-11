@@ -10,7 +10,6 @@
 		}
 		
 		function saveArticle($data) {
-
 			$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht)');
 			$statement->execute(array(
 				':titel' => $data['titel'],
@@ -27,4 +26,20 @@
 				':data' => 1,
 			));
 		}*/
+		
+		function loadArticles() {
+			$dataStatement = $this->db->prepare('	SELECT ecm.artikel.id, titel, ecm.artikel.verfasser_id, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
+																						FROM ecm.artikel
+																						LEFT JOIN erp.mitarbeiter
+																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
+																						LEFT JOIN erp.person 
+																						ON erp.mitarbeiter.person_id = erp.person.id
+																						ORDER BY erstellt');
+			
+			$dataStatement->execute(array());
+			
+			$data = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
+			
+			return json_encode($data);
+		}
 	}
