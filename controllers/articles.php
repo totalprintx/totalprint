@@ -24,7 +24,11 @@ class Articles extends Controller {
 		header('Location: ' . URL . 'articles');
 	}
 	
-	function loadArticles() {
-		echo $this->model->loadArticles($_GET);
+	function loadMyArticles() {
+		echo $this->model->loadMyArticles($_GET);
+	}
+	
+	function loadNewestArticles() {
+		echo $this->model->loadNewestArticles($_GET);
 	}
 }

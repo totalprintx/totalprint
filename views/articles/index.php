@@ -92,7 +92,7 @@
 		<table 	id="dg_articles" 
 						class="easyui-datagrid" 
 						style="width:100%"
-						url="articles/loadArticles"
+						url="articles/loadNewestArticles"
 						method="get"
 						rownumbers="false" pagination="false"
 						singleSelect="true">

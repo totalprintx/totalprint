@@ -12,4 +12,14 @@ $(document).ready(function() {
 		
 		this.style.color = "#337AB7";
 	});
+	
+	$("#chooser_myArticles").click(function() {
+		$("#dg_articles").datagrid({url:"articles/loadMyArticles"});
+		$("#dg_articles").datagrid('reload');
+	});
+	
+	$("#chooser_newestArticles").click(function() {
+		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
+		$("#dg_articles").datagrid('reload');
+	});
 });
