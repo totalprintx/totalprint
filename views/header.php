@@ -40,8 +40,8 @@
 	    </div>
         <div id="navbar" class="navbar-collapse collapse">
         	<ul class="nav navbar-nav">
-            	<li class="active"><a href="articles">Artikel</a></li>
-            	<li><a href="documents">Dokumente</a></li>
+            	<li><a id="a_article" href="articles">Artikel</a></li>
+            	<li><a id="a_documents" href="documents">Dokumente</a></li>
 	        </ul>
 	        <ul class="nav navbar-nav navbar-right">
 	        	<li><a href="/profile">Profil</a></li>
