@@ -1,8 +1,14 @@
 var selectedDirID;
+var dirNames = [];
 
 $(function(){
 	if($('#filemanager').length){
 		getDirList();
+
+		$("#uploadBtn").on('change', function () {
+			$('#filesToUpload').append('<li><img src="res/remove.png"/>'+this.value+'</li>');
+		});
+
 	}
 });
 
@@ -14,6 +20,7 @@ function getDirList(){
 				dataType: 'json',
 				data: "",
 				success: function(resultData) {
+						dirNames = resultData;
 						generateDirList(resultData);
 					}
 
@@ -87,4 +94,8 @@ function generateDirList(resultData){
 			}
 		})
 		.prepend('<img src="res/dot.png"/> ');
+}
+
+function deleteDir(){
+	alert("Verzeichnis " + dirNames[selectedDirID - 1].title + " löschen?");
 }

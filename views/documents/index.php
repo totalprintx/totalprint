@@ -55,7 +55,18 @@
         			<h3 class="panel-title">Upload</h3>
         		</div>
         		<div class="panel-body">
-        			Content
+        			<form action="upload.php" method="post" enctype="multipart/form-data">
+                        <ul id="filesToUpload">
+                        </ul>
+                            
+                            <div class="fileUpload btn btn-primary">
+                                <span>Upload</span>
+                                <input id="uploadBtn" type="file" class="upload" />
+                            </div>
+
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Hochladen" name="submit">
+                    </form>
         		</div>
         	</div>
         	<div id="" class="panel panel-primary">
@@ -74,7 +85,7 @@
                     <ul style="padding: 5px">
                         <li><a href="#">Neues Verzeichnis erstellen</a></li>
                         <li><a href="#">Verzeichnis verschieben</a></li>
-                        <li><a href="#">Verzeichnis löschen</a></li>
+                        <li><a href="#" onclick="deleteDir();return false;">Verzeichnis löschen</a></li>
                     </ul>
                 </div>
             </div>
