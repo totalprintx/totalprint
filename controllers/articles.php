@@ -24,6 +24,10 @@ class Articles extends Controller {
 		header('Location: ' . URL . 'articles');
 	}
 	
+	function uploadPicture() {
+		$this->model->uploadPicture($_FILES);
+	}
+
 	function loadMyArticles() {
 		echo $this->model->loadMyArticles($_GET);
 	}

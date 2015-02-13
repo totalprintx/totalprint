@@ -23,13 +23,15 @@
                     <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%;"></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea calss="markItUp" id="markItUp" name="text"></textarea></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp" name="text"></textarea></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
                     <div class="col-sm-9 col-md-6 col-lg-8">
-                        <!--<input type="hidden" name="max_file_size" value="1000">-->
+                    <form action="articles/uploadPicture" method="submit" enctype="multipart/form-data">
+                        <input type="hidden" name="max_file_size" value="10000">
                         <input name="thefile" type="file">
-                        <input type="submit" value="hochladen">
+                        <input type="submit" name="userfile" value="hochladen">
+                    </form>
                     </div>
                 </div>
                 <div  style="text-align:center;">
