@@ -10,13 +10,29 @@
 		}
 		
 		function saveArticle($data) {
-			$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht)');
-			$statement->execute(array(
-				':titel' => $data['titel'],
-				':verfasser_id' => '1',	//abfragen
-				':text' => $data['text'],
-				':veroeffentlicht' => 1,
-			));
+			$date = new DateTime();
+			$date = $date->format('Y-m-d');
+			var_dump("expression articles_model");
+			if($data['action_type'] == "publish_article") {
+				var_dump("publish_article!!!!!!!!");
+				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht)');
+				$statement->execute(array(
+					':titel' => $data['titel'],
+					':verfasser_id' => '1',	//abfragen
+					':text' => $data['text'],
+					':veroeffentlicht' => $date,
+				));
+			}
+			if($data['action_type'] == "save_article") {
+				var_dump("save_article!!!!!!!!");
+				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, bearbeitet) VALUE (:titel, :verfasser_id, :text, :bearbeitet)');
+				$statement->execute(array(
+					':titel' => $data['titel'],
+					':verfasser_id' => '1',	//abfragen
+					':text' => $data['text'],
+					':bearbeitet' => $date,
+				));
+			}
 		}
 
 		/*function savePicture($data) {

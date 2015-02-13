@@ -1,6 +1,6 @@
 <?php
-
-/*define('DB_TP_TYPE', 'mysql');
+/*
+define('DB_TP_TYPE', 'mysql');
 define('DB_TP_HOST', 'lvps87-230-14-183.dedicated.hosteurope.de');
 define('DB_TP_NAME', 'projekt');
 define('DB_TP_USER', 'bas-erp');

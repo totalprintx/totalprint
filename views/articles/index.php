@@ -23,7 +23,7 @@
                     <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%;"></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea name="text"></textarea></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea calss="markItUp" id="markItUp" name="text"></textarea></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
                     <div class="col-sm-9 col-md-6 col-lg-8">
@@ -35,7 +35,8 @@
                     </div>
                 </div>
                 <div  style="text-align:center;">
-                    <button type="submit" id="publish">vero&uml;ffentlichen</button>
+                    <button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
+                    <button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
                 </div>
         </div>
     </div>
