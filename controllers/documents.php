@@ -17,4 +17,8 @@ class Documents extends Controller {
 	function searchDocuments() {
 		echo $this->model->searchDocuments($_POST);
 	}	
+
+	function getDirList() {
+		echo $this->model->getDirList($_POST);
+	}
 }

@@ -16,4 +16,13 @@
 			return json_encode($result);
 
 		}
+
+		function getDirList(){
+			$statement = $this->db->prepare('SELECT * FROM directories');
+			$statement->execute(array());
+			
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			
+			return json_encode($result);
+		}
 	}

@@ -18,6 +18,8 @@
 	?>
 	<link rel="stylesheet" href="public/css/filemanager.css">
 	<script type="text/javascript" src="public/js/filemanager.js"></script>
+	<script type="text/javascript" src="public/js/storage.js"/>
+
 	
 	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery-2.1.3.min.js"></script>

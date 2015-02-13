@@ -6,7 +6,7 @@ $(function(){
 
 function getDirList(){
 	$.ajax({
-				type: "GET",
+				type: "POST",
 				url: "tp_storage.php",
 				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
 				dataType: 'json',
@@ -84,5 +84,5 @@ function generateDirList(resultData){
 				loadFiles(this.parentElement.id);
 			}
 		})
-		.prepend('<img src="dot.png"/> ');
+		.prepend('<img src="res/dot.png"/> ');
 }

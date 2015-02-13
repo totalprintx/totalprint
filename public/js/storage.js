@@ -1,7 +1,13 @@
+var selectedDirID;
+
 $(function(){
+	getDirList();
+});
+
+function getDirList(){
 	$.ajax({
 				type: "GET",
-				url: "tp_storage.php",
+				url: "documents/getDirList",
 				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
 				dataType: 'json',
 				data: "",
@@ -10,11 +16,27 @@ $(function(){
 					}
 
 			});
+}
 
-});
+function toggleDir(id){
+	$('#' + id).find("ul:first").toggle();
+	$('#' + id).find("a:first img").attr("src", ($('#' + id).find("ul:first").is(':hidden') ? 'res/plus.png' : 'res/minus.png'));
+}
 
-function loadFiles(){
-	alert("fileload for ");
+function loadFiles(id){
+	selectedDirID = id;
+	checkSelectedDir();
+	alert("fileload for " + id);
+}
+
+function checkSelectedDir(){
+	$.each($('#dirlist').find("li a"), function() {
+		if(this.parentElement.id == selectedDirID){
+			this.id = "selectedDir";
+		} else {
+			this.removeAttribute('id');
+		}
+	});
 }
 
 function generateDirList(resultData){
@@ -31,17 +53,7 @@ function generateDirList(resultData){
 					$('#' + this.parent_id).find("ul:first").append('<li id="'+this.dir_id+'"><a href="#">'+this.title+'</a></li>');
 				} else {
 					$('#' + this.parent_id)
-						.append('<ul><li id="'+this.dir_id+'"><a href="#">'+this.title+'</a></li></ul>')
-	/*					.click(function(event){
-							if (this == event.target) {
-								$(this).css('list-style-image',
-									(!$(this).children().is(':hidden')) ? 'url(closed.png)' : 'url(opened.png)');
-								$(this).children().toggle();
-							}
-							return false;
-						})
-						.css({cursor:'pointer', 'list-style-image':'url(closed.png)'})
-						.children().hide()*/;
+						.append('<ul><li id="'+this.dir_id+'"><a href="#">'+this.title+'</a></li></ul>');
 				}
 
 			} else {
@@ -55,56 +67,22 @@ function generateDirList(resultData){
 	}
 
 	//Toggle
-/*	$('#dirlist').find("li:has(ul)").find("a:first")
+	$('#dirlist').find("li:has(ul)").find("a:first")
 		.click(function(event){
 			if(this == event.target){
-				alert(this.parentElement.id);
+				toggleDir(this.parentElement.id);
+				loadFiles(this.parentElement.id);
 			}
 		})
-		.css({background:'red'})
-		;*/
+		.prepend('<img src="res/plus.png"/> ')
+		.parent().find("ul:first").hide();
 
 	//others
 	$('#dirlist').find("li:not(:has(ul))").find("a")
 		.click(function(event){
 			if(this == event.target){
-				alert(this.parentElement.id);
+				loadFiles(this.parentElement.id);
 			}
 		})
-		.prepend('<img src="dot.png"/>')
-		.css({background:'red'})
-		;
-
-
-
-/*	$('#dirlist').find("li:has(ul)")
-		.click(function(event){
-			if (this == event.target) {
-				$(this).css('list-style-image',
-					(!$(this).children().is(':hidden')) ? 'url(closed.png)' : 'url(opened.png)');
-				$(this).children().toggle();
-			}
-			return false;
-		})
-		.css({cursor:'pointer', 'list-style-image':'url(closed.png)'})
-		.children().hide();*/
-
-
-		// cp
-/*
-				$('li')
-			.css('pointer','default')
-			.css('list-style-image','none');
-		$('li:has(ul)')
-			.click(function(event){
-				if (this == event.target) {
-					$(this).css('list-style-image',
-						(!$(this).children().is(':hidden')) ? 'url(closed.png)' : 'url(opened.png)');
-					$(this).children().toggle();
-				}
-				return false;
-			})
-			.css({cursor:'pointer', 'list-style-image':'url(closed.png)'})
-			.children().hide();
-		$('li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});*/
+		.prepend('<img src="res/dot.png"/> ');
 }

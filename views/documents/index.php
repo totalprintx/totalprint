@@ -24,7 +24,7 @@
         	</div>
         	<div id="splitcontainer" class="panel-body">
         		<div id="splitleft" class="ui-layout-west">
-                    
+                    <ul id="dirlist"></ul>
                 </div>
 				<div id="splitright" class="ui-layout-center">
 					<table      id="tt" 
