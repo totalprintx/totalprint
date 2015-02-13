@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
 <form action="articles/saveArticle" method="post">
-    <div id="popup" class="scroll">
+    <div id="popup">
     
         <div class="schliessen">X</div>
         
@@ -23,19 +23,18 @@
                     <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%;"></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea name="text"></textarea></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea calss="markItUp" id="markItUp" name="text"></textarea></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
                     <div class="col-sm-9 col-md-6 col-lg-8">
-                        <!--<form enctype="multipart/form-data" action="articles/savePicture" method="post">
-                            <input type="hidden" name="max_file_size" value="1000">
-                            <input name="thefile" type="file">
-                            <input type="submit" value="senden">
-                        </form>-->
+                        <!--<input type="hidden" name="max_file_size" value="1000">-->
+                        <input name="thefile" type="file">
+                        <input type="submit" value="hochladen">
                     </div>
                 </div>
                 <div  style="text-align:center;">
-                    <button type="submit" id="publish">vero&uml;ffentlichen</button>
+                    <button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
+                    <button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
                 </div>
         </div>
     </div>
