@@ -13,8 +13,8 @@
 
 
 	<link rel="stylesheet" href="public/css/filemanager.css">
-	
-	
+
+	<script type="text/javascript" src="public/js/storage.js"/>
 
 	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery-2.1.3.min.js"></script>
@@ -35,8 +35,8 @@
 	    </div>
         <div id="navbar" class="navbar-collapse collapse">
         	<ul class="nav navbar-nav">
-            	<li class="active"><a href="articles">Artikel</a></li>
-            	<li><a href="documents">Dokumente</a></li>
+            	<li><a id="a_article" href="articles">Artikel</a></li>
+            	<li><a id="a_documents" href="documents">Dokumente</a></li>
 	        </ul>
 	        <ul class="nav navbar-nav navbar-right">
 	        	<li><a href="/profile">Profil</a></li>
