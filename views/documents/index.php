@@ -60,12 +60,24 @@
         	</div>
         	<div id="" class="panel panel-primary">
         		<div class="panel-heading">
-        			<h3 class="panel-title">Details</h3>
+        			<h3 class="panel-title">Datei Infos</h3>
         		</div>
         		<div class="panel-body">
-        			Content
+        			Keine Datei ausgewählt
         		</div>
         	</div>
+            <div id="" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Verzeichnis Optionen</h3>
+                </div>
+                <div class="panel-body">
+                    <ul style="padding: 5px">
+                        <li><a href="#">Neues Verzeichnis erstellen</a></li>
+                        <li><a href="#">Verzeichnis verschieben</a></li>
+                        <li><a href="#">Verzeichnis löschen</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

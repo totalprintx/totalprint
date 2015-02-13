@@ -1,7 +1,9 @@
 var selectedDirID;
 
 $(function(){
-	getDirList();
+	if($('#filemanager').length){
+		getDirList();
+	}
 });
 
 function getDirList(){
