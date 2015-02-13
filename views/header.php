@@ -11,19 +11,16 @@
 	<link rel="stylesheet" href="public/css/basic.css">
 	<script type="text/javascript" src="public/js/basic.js"></script>
 
-	<?php 
-		foreach ($this->js as $key => $value) {
-			echo '<script type="text/javascript" src="' . URL . 'public/js/' . $value. '"></script>';
-		}
-	?>
+
 	<link rel="stylesheet" href="public/css/filemanager.css">
-	<script type="text/javascript" src="public/js/filemanager.js"></script>
 	
+	
+
 	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery-2.1.3.min.js"></script>
-  <script type="text/javascript" src="libs/jquery/jquery.easyui.min.js"></script>
+  	<script type="text/javascript" src="libs/jquery/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery.layout.js"></script>
-	
+
 </head>
 <body>
 	<?php Session::init(); ?>

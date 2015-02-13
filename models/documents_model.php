@@ -3,16 +3,14 @@
 	class Documents_Model extends Model {
 
 		function searchDocuments($data) {
-			$statement = $this->db->prepare('SELECT s.id, s.title, s.file_ext, c.title, s.author_id, s.upload_date as Nr., Titel, Dateityp, Kategorie, Ersteller, Erstellungsdatum
-															FROM storage s, category c 
-															WHERE s.category_id = c.category_id
-	                  										AND (s.title LIKE '%$data['searchbox']%' 
-	                  										OR c.title LIKE '%$data['searchbox']%') 
-	                  										order by upload_date ASC');
-			$statement->execute(array());
+			$statement = $this->db->prepare('SELECT s.id as Nr, s.title as Titel, s.file_ext as Dateityp, c.title as Kategorie, s.author_id as Ersteller, s.upload_date as Erstellungsdatum FROM storage s, category c WHERE s.category_id = c.category_id AND (s.title LIKE :searchterm OR c.title LIKE :searchterm) order by upload_date ASC');
+
+			//$statement->execute(array(':searchterm' => $data['searchbox'],));
+			//$statement->execute(array(':searchterm' => "%".$data['searchterm']."%"));
+			$statement->execute(array(':searchterm' => "%krank%"));
 			
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-			
+
 			return json_encode($result);
 
 		}

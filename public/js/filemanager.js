@@ -1,10 +1,13 @@
 $(document).ready(function(){
-	if (document.getElementById('splitcontainer') != null)
-	    $("#splitcontainer").layout({ applyDemoStyles: true});
-
 	$("#submitsearch").click(function() {
-		$("#tt").datagrid({url:"documents/searchDocuments"});
-		$("#tt").datagrid('reload');
+		var searchterm = document.getElementById('searchbox').value;
+
+		var data = array();
+
+		$("#dg_documents").datagrid({url:"documents/searchDocuments",
+									 data:"",
+									 type:"POST"});
+		$("#dg_documents").datagrid('reload');
 	});
 });
 
