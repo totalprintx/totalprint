@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
 <form action="articles/saveArticle" method="post">
-    <div id="popup">
+    <div id="popup" class="scroll">
     
         <div class="schliessen">X</div>
         
