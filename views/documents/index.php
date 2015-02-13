@@ -4,12 +4,13 @@
         	<div class="col-lg-6">
 				<div id="title"><h4><b>Dokumentenverwaltung</b></h4></div>
 			</div>
+            <!-- action="documents/searchDocuments" method="post" enctype="multipart/form-data" -->
   			<div class="col-lg-6">
     			<div class="input-group" id="searchbar">
-    				<form action="ecms/search_function.php" method="post" enctype="multipart/form-data" class="input-group">
+    				<form class="input-group">
       					<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Suchbegriff eingeben..." onFocus="this.value=''">
       					<span class="input-group-btn">
-        					<button class="btn btn-default" type="submit">Go!</button>
+        					<button id="submitsearch" class="btn btn-default" type="submit">Go!</button>
       					</span>
 	    			</form>
     			</div>
@@ -26,18 +27,22 @@
                     
                 </div>
 				<div id="splitright" class="ui-layout-center">
-					<table id="tt" class="easyui-datagrid" style="width:100%;height:96%"
-            			url="search_function.php"
-            			sortName="Titel" sortOrder="asc"
-            			rownumbers="false" pagination="true">
+					<table      id="tt" 
+                                class="easyui-datagrid" 
+                                style="width:100%;height:96%"
+                                url=""
+            			        sortName="Titel" 
+                                sortOrder="asc"
+            			        rownumbers="false" 
+                                pagination="false">
         				<thead>
             				<tr>
-                				<th field="icon" width="5%" sortable="true">Icon</th>
-                				<th field="title" width="25%" sortable="true" sortable="true">Titel</th>
-					            <th field="filetype" width="10%" align="right" sortable="true">Dateityp</th>
-					            <th field="category" width="20%" align="center" sortable="true">Kategorie</th>
-					            <th field="author" width="20%" align="right" sortable="true">Autor</th>
-					            <th field="creationdate" width="20%" sortable="true">Erstellungsdatum</th>
+                				<th field="Nr." width="5%" sortable="true">Nr.</th>
+                				<th field="Titel" width="25%" sortable="true" sortable="true">Titel</th>
+					            <th field="Dateityp" width="10%" align="right" sortable="true">Dateityp</th>
+					            <th field="Kategorie" width="20%" align="center" sortable="true">Kategorie</th>
+					            <th field="Ersteller" width="20%" align="right" sortable="true">Autor</th>
+					            <th field="Erstellungsdatum" width="20%" sortable="true">Erstellungsdatum</th>
 					        </tr>
 					    </thead>
 					</table>

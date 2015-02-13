@@ -12,5 +12,9 @@ class Documents extends Controller {
 	
 	function details() {
 		$this->view->render('documents/index');
+	}
+
+	function searchDocuments() {
+		echo $this->model->searchDocuments($_POST);
 	}	
 }
