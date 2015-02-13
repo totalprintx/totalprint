@@ -50,7 +50,8 @@
 																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
-																						ORDER BY erstellt');
+																						ORDER BY erstellt
+																						DESC');
 			
 			$dataStatement->execute(array());
 			
@@ -67,7 +68,8 @@
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
 																						WHERE ecm.artikel.verfasser_id = 1
-																						ORDER BY erstellt');
+																						ORDER BY erstellt
+																						DESC');
 			
 			$dataStatement->execute(array());
 			
