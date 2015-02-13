@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
 <form action="articles/saveArticle" method="post">
-    <div id="popup" class="scroll">
+    <div id="popup">
     
         <div class="schliessen">X</div>
         
@@ -27,11 +27,9 @@
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
                     <div class="col-sm-9 col-md-6 col-lg-8">
-                        <!--<form enctype="multipart/form-data" action="articles/savePicture" method="post">
-                            <input type="hidden" name="max_file_size" value="1000">
-                            <input name="thefile" type="file">
-                            <input type="submit" value="senden">
-                        </form>-->
+                        <!--<input type="hidden" name="max_file_size" value="1000">-->
+                        <input name="thefile" type="file">
+                        <input type="submit" value="hochladen">
                     </div>
                 </div>
                 <div  style="text-align:center;">
