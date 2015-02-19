@@ -35,4 +35,8 @@ class Articles extends Controller {
 	function loadNewestArticles() {
 		echo $this->model->loadNewestArticles($_GET);
 	}
+	
+	function searchArticles() {
+		echo $this->model->searchArticles($_POST);
+	}
 }

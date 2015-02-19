@@ -59,10 +59,10 @@
 				
 				<div class="col-md-8">
 					<div class="input-group" style='float:right'>
-						<form action="ecms/search_function.php" method="post" enctype="multipart/form-data" class="input-group">
+						<form enctype="multipart/form-data" class="input-group">
 							<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="submit">Go!</button>
+								<a id="btn_search" class="btn btn-default">Go!</a>
 							</span>
 						</form>
 					</div>
