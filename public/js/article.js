@@ -39,6 +39,14 @@ $(document).ready(function() {
 	});
 	*/
 	
+	$("#searchbox").keypress(function(event){
+		if(event.keyCode == 10 || event.keyCode == 13) {
+			event.preventDefault();
+			$("#btn_search").trigger("click");
+			return false;
+		}
+  });
+	
 	$("#btn_search").click(function() {
 		greyOutChooser();
 		
