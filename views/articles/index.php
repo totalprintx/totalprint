@@ -46,28 +46,29 @@
 	<div class="panel-heading">
 		<div class="panel-title row">
 		
-			<div class="col-md-8">
-					<div id="title"><h4><b>Artikel</b></h4></div>
+			<div class="col-md-3">
+				<div id="title"><h4><b>Artikel</b></h4></div>
 			</div>
 			
-			<div class="col-md-4">
-			
-				<div class="col-md-4">
+			<div class="col-md-6">
+				<div class="col-md-6">
+					<button id="btn_edit" class="btn btn-default" type="submit" style="float:right">Artikel bearbeiten</button>
+				</div>
+				<div class="col-md-6">
 					<!-- OPEN POPUP -->
-					<button class="btn btn-default popup_oeffnen" type="submit" style="float:right">Neuen Artikel erstellen</button>
+					<button class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
 				</div>
-				
-				<div class="col-md-8">
-					<div class="input-group" style='float:right'>
-						<form enctype="multipart/form-data" class="input-group">
-							<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
-							<span class="input-group-btn">
-								<a id="btn_search" class="btn btn-default">Go!</a>
-							</span>
-						</form>
-					</div>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="input-group" style='float:right'>
+					<form enctype="multipart/form-data" class="input-group">
+						<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
+						<span class="input-group-btn">
+							<a id="btn_search" class="btn btn-default">Go!</a>
+						</span>
+					</form>
 				</div>
-				
 			</div>
 			
 		</div>

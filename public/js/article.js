@@ -16,6 +16,10 @@ $(document).ready(function() {
 		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
 	});
 	
+	$("#btn_edit").click(function() {
+		alert("EDIT");
+	});
+	
 	$("#btn_search").click(function() {
 		greyOutChooser();
 		
