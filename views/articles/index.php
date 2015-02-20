@@ -63,7 +63,7 @@
 			<div class="col-md-3">
 				<div class="input-group" style='float:right'>
 					<form enctype="multipart/form-data" class="input-group">
-						<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
+						<input id="searchbox" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
 						<span class="input-group-btn">
 							<a id="btn_search" class="btn btn-default">Go!</a>
 						</span>
