@@ -1,5 +1,5 @@
 var selectedDirID;
-var dirNames = [];
+var dirMap = {};
 
 $(function(){
 	if($('#filemanager').length){
@@ -20,11 +20,24 @@ function getDirList(){
 				dataType: 'json',
 				data: "",
 				success: function(resultData) {
-						dirNames = resultData;
+						generateDirMap(resultData);
+						fillUploadTargetList();
 						generateDirList(resultData);
 					}
 
 			});
+}
+
+function generateDirMap(resultData){
+	$.each(resultData, function(){
+		dirMap[this.dir_id] = this.title;
+	});
+}
+
+function fillUploadTargetList(){
+	$.each(dirMap, function (i, val) {
+		$('#uploadTargetDir').append('<option value="'+ i +'">' + val + '</option>');
+	});
 }
 
 function toggleDir(id){
@@ -97,5 +110,5 @@ function generateDirList(resultData){
 }
 
 function deleteDir(){
-	alert("Verzeichnis " + dirNames[selectedDirID - 1].title + " löschen?");
+	alert("Verzeichnis " + dirMap[selectedDirID] + " löschen?");
 }
