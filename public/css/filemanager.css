@@ -484,3 +484,20 @@
   width: 100%;
   margin: 3px;
 }
+
+.styled input[type="file"] {
+display: none;
+}
+
+.styled input[type="file"] + label { 
+background: url('file.png') no-repeat;
+}
+
+.styled {
+display: inline-block;
+}
+.styled label {
+display: block;
+width: 200px;
+height:50px;
+}
