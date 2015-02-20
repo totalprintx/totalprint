@@ -53,7 +53,7 @@
 
 			//DB
 			$statement = $this->db->prepare('INSERT INTO storage (title, file_ext, category_id) VALUES (:filename, :fileextension, :dir)');
-
+			
 			if ($statement->execute(array(':filename' => $file['filename'], ':fileextension' => $file['extension'], ':dir' => $dir))) {
 				$target_file = $target_dir . $this->db->lastInsertId();
 				move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);

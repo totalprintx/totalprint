@@ -11,6 +11,8 @@ define('DB_ECMS_HOST', 'lvps87-230-14-183.dedicated.hosteurope.de');
 define('DB_ECMS_NAME', 'ecm');
 define('DB_ECMS_USER', 'bas-erp');
 define('DB_ECMS_PASS', 'erplogin');
+
+
 /*
 define('DB_TP_TYPE', 'mysql');
 define('DB_TP_HOST', 'localhost');

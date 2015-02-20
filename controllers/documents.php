@@ -27,6 +27,6 @@ class Documents extends Controller {
 			$this->view->messageBox = "test";
 		}
 		$this->view->messageBox = "test";
-		header('Location: ' . URL . 'documents');
+		$this->view->render('documents/index');
 	}
 }
