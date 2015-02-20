@@ -17,7 +17,11 @@ $(document).ready(function() {
 	});
 	
 	$("#btn_article_edit").click(function() {
-		alert("EDIT");
+		var row = $('#dg_articles').datagrid('getSelected');
+		if(row == null)
+			alert("Es wurde kein Artikel zum Bearbeiten ausgewählt.");
+		var articleId = row.id;
+		
 	});
 	
 	$("#searchbox").keypress(function(event){
