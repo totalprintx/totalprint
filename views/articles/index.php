@@ -52,11 +52,11 @@
 			
 			<div class="col-md-6">
 				<div class="col-md-6">
-					<button id="btn_edit" class="btn btn-default" type="submit" style="float:right">Artikel bearbeiten</button>
+					<button id="btn_article_edit" class="btn btn-default" type="submit" style="float:right">Artikel bearbeiten</button>
 				</div>
 				<div class="col-md-6">
 					<!-- OPEN POPUP -->
-					<button class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
+					<button id="btn_article_create" class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
 				</div>
 			</div>
 			
