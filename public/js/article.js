@@ -16,7 +16,7 @@ $(document).ready(function() {
 		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
 	});
 	
-	$("#btn_edit").click(function() {
+	$("#btn_article_edit").click(function() {
 		alert("EDIT");
 	});
 	
