@@ -9,10 +9,10 @@
 			));
 		}
 		
-		function uploadPicture($file) {
+		/*function uploadPicture($_FILES) {
 			system.out.println("some");
-			system.out.println($file);
-			//if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
+			system.out.println($_FILES['userfile']['name']);
+			if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
 				$fileName = $_FILES['userfile']['name'];
 				$tmpName  = $_FILES['userfile']['tmp_name'];
 				$fileSize = $_FILES['userfile']['size'];
@@ -38,13 +38,13 @@
 				include 'library/closedb.php';
 
 				echo "<br>File $fileName uploaded<br>";
-			//} 
-		}
+			} 
+		}*/
 
 		function saveArticle($data) {
 			$date = new DateTime();
 			$date = $date->format('Y-m-d');
-			var_dump("expression articles_model");
+
 			if($data['action_type'] == "publish_article") {
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht)');
 				$statement->execute(array(
@@ -54,6 +54,7 @@
 					':veroeffentlicht' => $date,
 				));
 			}
+
 			if($data['action_type'] == "save_article") {
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, bearbeitet) VALUE (:titel, :verfasser_id, :text, :bearbeitet)');
 				$statement->execute(array(
@@ -63,16 +64,49 @@
 					':bearbeitet' => $date,
 				));
 			}
-		}
 
-		/*function savePicture($data) {
-			$statement = $this->db->prepare('INSERT INTO bild (type, data) VALUE (:type, :data)');
-			$statement->execute(array(
-				':type' => 1,
-				':data' => 1,
-			));
-		}*/
+			//var_dump($_FILES['userfile']['name']);
+			//if($_FILES['userfile']['size'] > 0) {
+				var_dump("expression articles_model");
+				$fileName = $_FILES['userfile']['name'];
+				$tmpName  = $_FILES['userfile']['tmp_name'];
+				$fileSize = $_FILES['userfile']['size'];
+				$fileType = $_FILES['userfile']['type'];
+
+				$fp      = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+
+				if(!get_magic_quotes_gpc())
+				{
+				    $fileName = addslashes($fileName);
+				}
+
+				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+				$statement->execute(array(
+					':name' => $fileName,
+					':size' => $fileSize,
+					':type' => $fileType,
+					':content' => $content,
+				));
+
+
+				/*
+				$query = "INSERT INTO upload (name, size, type, content ) ".
+				"VALUES ('$fileName', '$fileSize', '$fileType', '$content')";
+
+				mysql_query($query) or die('Error, query failed');
+				include 'library/closedb.php';
+
+				echo "<br>File $fileName uploaded<br>";
+				*/
+			//} 
+		}
 		
+
+
+
 		function loadNewestArticles() {
 			$dataStatement = $this->db->prepare('	SELECT ecm.artikel.id, titel, ecm.artikel.verfasser_id, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
 																						FROM ecm.artikel

@@ -21,11 +21,12 @@ class Articles extends Controller {
 	
 	function saveArticle() {
 		$this->model->saveArticle($_POST);
-		header('Location: ' . URL . 'articles');
+		//header('Location: ' . URL . 'articles');
 	}
 	
 	function uploadPicture() {
-		$this->model->uploadPicture($_FILES);
+		var_dump("articles works");
+		$this->model->uploadPicture($_POST);
 	}
 
 	function loadMyArticles() {
