@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/skins/markitup/style.css" />
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
-<form action="articles/saveArticle" method="post">
+<form action="articles/saveArticle" method="post" enctype="multipart/form-data">
     <div id="popup">
     
         <div class="schliessen">X</div>
@@ -27,11 +27,11 @@
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
                     <div class="col-sm-9 col-md-6 col-lg-8">
-                    <form action="articles/uploadPicture" method="submit" enctype="multipart/form-data">
+                    <!--<form enctype="multipart/form-data">-->
                         <input type="hidden" name="max_file_size" value="10000">
-                        <input name="thefile" type="file">
-                        <input type="submit" name="userfile" value="hochladen">
-                    </form>
+                        <input name="userfile" type="file" id="userfile"> 
+                        <!--<a class="btn btn-default" id="btn_picture_upload" type="submit" name="userfile"> hochladen </a>-->
+                    <!--</form>-->
                     </div>
                 </div>
                 <div  style="text-align:center;">
@@ -63,7 +63,7 @@
 			<div class="col-md-3">
 				<div class="input-group" style='float:right'>
 					<form enctype="multipart/form-data" class="input-group">
-						<input id="searchbox" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
+						<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
 						<span class="input-group-btn">
 							<a id="btn_search" class="btn btn-default">Go!</a>
 						</span>

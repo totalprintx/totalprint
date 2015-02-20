@@ -23,14 +23,21 @@ $(document).ready(function() {
 		var articleId = row.id;
 		
 	});
-	
-	$("#searchbox").keypress(function(event){
-    if(event.keyCode == 10 || event.keyCode == 13) {
-      event.preventDefault();
-			$("#btn_search").trigger("click");
-      return false;
-    }
-  });
+
+	/*$("#btn_picture_upload").click(function() {
+		alert('js works');
+		$.ajax({
+				type: "POST",
+				url: "articles/uploadPicture",
+				dataType: 'json',
+				data: "",
+				success: function(resultData) {
+					alert("Marcel ist fett");
+				}
+
+			});
+	});
+	*/
 	
 	$("#btn_search").click(function() {
 		greyOutChooser();
