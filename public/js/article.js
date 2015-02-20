@@ -16,6 +16,18 @@ $(document).ready(function() {
 		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
 	});
 	
+	$("#btn_article_edit").click(function() {
+		alert("EDIT");
+	});
+	
+	$("#searchbox").keypress(function(event){
+    if(event.keyCode == 10 || event.keyCode == 13) {
+      event.preventDefault();
+			$("#btn_search").trigger("click");
+      return false;
+    }
+  });
+	
 	$("#btn_search").click(function() {
 		greyOutChooser();
 		

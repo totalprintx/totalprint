@@ -1,13 +1,19 @@
 $(document).ready(function(){
+
+document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
+
 	$("#submitsearch").click(function() {
-		var searchterm = document.getElementById('searchbox').value;
 
-		var data = array();
+		var search = document.getElementById('searchbox').value;
 
-		$("#dg_documents").datagrid({url:"documents/searchDocuments",
-									 data:"",
-									 type:"POST"});
-		$("#dg_documents").datagrid('reload');
+		$("#dg_documents").datagrid({method:"POST",
+																queryParams: {
+																	searchTerm: search
+																},
+																url:"documents/searchDocuments"});
+
 	});
 });
 
