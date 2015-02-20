@@ -1,6 +1,6 @@
 <?php
-	define("DB_SERVER", "localhost");
-	define("DB_USER", "root");
-	define("DB_PASSWORD", "");
-	define("DB", "ecms");
+	define("DB_SERVER", "lvps87-230-14-183.dedicated.hosteurope.de");
+	define("DB_USER", "bas-erp");
+	define("DB_PASSWORD", "erplogin");
+	define("DB", "ecm");
 ?>
