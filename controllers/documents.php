@@ -19,6 +19,14 @@ class Documents extends Controller {
 	}	
 
 	function getDirList() {
-		echo $this->model->getDirList($_POST);
+		echo $this->model->getDirList();
+	}
+
+	function uploadFiles(){
+		if(!$this->model->uploadFiles()){
+			$this->view->messageBox = "test";
+		}
+		$this->view->messageBox = "test";
+		header('Location: ' . URL . 'documents');
 	}
 }

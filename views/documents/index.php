@@ -1,5 +1,4 @@
 <script src="public/js/filemanager.js"></script>
-
 <div id="filemanager" class="panel panel-primary">
     <div class="panel-heading">
         <div class="panel-title row">
@@ -58,7 +57,7 @@
         			<h3 class="panel-title">Upload</h3>
         		</div>
         		<div class="panel-body">
-        			<form action="upload.php" method="post" enctype="multipart/form-data">
+        			<form action="documents/uploadFiles" method="post" enctype="multipart/form-data">
                         <ul id="filesToUpload">
                         </ul>
                             
@@ -68,6 +67,9 @@
                             </div>
 
                         <input type="file" name="fileToUpload" id="fileToUpload">
+                        <br/>Zielverzeichnis:<br/>
+                            <select id="uploadTargetDir" name="uploadTargetDir" size="1"></select>
+                        <br/>
                         <input type="submit" value="Hochladen" name="submit">
                     </form>
         		</div>
@@ -77,6 +79,10 @@
         			<h3 class="panel-title">Datei Infos</h3>
         		</div>
         		<div class="panel-body">
+                <?php 
+    
+        echo $this->messageBox;
+?>
         			Keine Datei ausgewählt
         		</div>
         	</div>
