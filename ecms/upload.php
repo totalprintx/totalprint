@@ -23,6 +23,7 @@ $sql = 'INSERT INTO storage (title, file_ext, category_id) VALUES (:filename, :f
     	$target_file = $target_dir . mysqli_insert_id($con);
     	mysqli_close($con);
     	move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
+        return ;
     	//header('Location: storage.php');
     } else { 
     	mysqli_close($con);
