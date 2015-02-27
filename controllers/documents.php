@@ -23,10 +23,23 @@ class Documents extends Controller {
 	}
 
 	function uploadFiles(){
-		if(!$this->model->uploadFiles()){
+/*		if(!$this->model->uploadFiles()){
 			$this->view->messageBox = "test";
 		}
-		$this->view->messageBox = "test";
-		$this->view->render('documents/index');
+		$this->view->messageBox = "test";*/
+		$this->model->uploadFiles();
+		header('Location: ' . URL . 'documents');
+	}
+
+	function resolveFileHistory(){
+		echo $this->model->resolveFileHistory($_GET);
+	}
+
+	function fillDataGrid(){
+		echo $this->model->fillDataGrid($_POST['dirId']);
+	}
+
+	function deleteFile(){
+		echo $this->model->deleteFile($_GET);
 	}
 }

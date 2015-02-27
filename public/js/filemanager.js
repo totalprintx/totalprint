@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-document.getElementById("uploadBtn").onchange = function () {
-    document.getElementById("uploadBtn").value = this.value;
-};
 
 	$("#submitsearch").click(function() {
 

@@ -5,12 +5,41 @@ $(function(){
 	if($('#filemanager').length){
 		getDirList();
 
-		$("#uploadBtn").on('change', function () {
+/*		$("#uploadBtn").on('change', function () {
 			$('#filesToUpload').append('<li><img src="res/remove.png"/>'+this.value+'</li>');
-		});
+		});*/
 
 	}
 });
+
+function handleRowClick(){
+		var row = $('#dg_documents').datagrid('getSelected');
+		var firstLink = true;
+		fileList = $('#fileHistory');
+		fileList.html('<center><li><img src="res/loader.gif"/></li></center>');
+		if (row){
+			$.ajax({
+				type: "GET",
+				url: "documents/resolveFileHistory",
+				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
+				dataType: 'json',
+				data: {fileName:row['Titel'], fileExt:row['Dateityp'], dirId:selectedDirID},
+				success: function(resultData) {
+							fileList.html("");
+							$.each(resultData, function(){
+								if(firstLink){
+									fileList.append('<li><a href="http://localhost/tp_storage/' + this['id'] + '" download="' + row['Titel'] + '.' + row['Dateityp'] + '"><b>' + row['Titel'] + '</b></a></li>');
+									firstLink = false;
+								}else{
+									fileList.append('<li><a href="http://localhost/tp_storage/' + this['id'] + '" download="' + row['Titel'] + '.' + row['Dateityp'] + '">' + this['upload_date'] + '</a></li>');
+								}
+								
+							});
+					}
+
+			});
+		}
+}
 
 function getDirList(){
 	$.ajax({
@@ -49,6 +78,15 @@ function loadFiles(id){
 	selectedDirID = id;
 	checkSelectedDir();
 	alert("fileload for " + id);
+	$("#dg_documents").datagrid({
+
+									onClickRow:function(){
+										handleRowClick();
+									},
+
+									method:"POST",
+									queryParams: { dirId: selectedDirID},
+									url:"documents/fillDataGrid"});
 }
 
 function checkSelectedDir(){
@@ -107,6 +145,25 @@ function generateDirList(resultData){
 			}
 		})
 		.prepend('<img src="res/dot.png"/> ');
+}
+
+function deleteFile(){
+	var row = $('#dg_documents').datagrid('getSelected');
+	if(confirm("Datei " + row['Titel'] + "." + row['Dateityp'] + " wirklich löschen?")){
+		$.ajax({
+				type: "GET",
+				url: "documents/deleteFile",
+				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
+				dataType: 'json',
+				data: {fileName:row['Titel'], fileExt:row['Dateityp'], dirId:selectedDirID},
+				success: function(resultData) {
+						$('#dg_documents').datagrid('reload');	
+					}
+
+			});
+	}else{
+		alert("abgebrochen");
+	}
 }
 
 function deleteDir(){

@@ -43,8 +43,11 @@ $(document).ready(function() {
 			data: data,
 			success: function(resultDataJson) {
 				var resultData = JSON.parse(resultDataJson);
-				alert(resultData['titel']);
-				$('#')
+				document.getElementById('titel_edit').value = resultData['titel'];
+				document.getElementById('verfasser_edit').value = resultData['verfasser'];
+				document.getElementById('rubrik_edit').value = resultData['rubrik'];
+				document.getElementById('ort_edit').value = resultData['ort'];
+				document.getElementById('markItUp2').value = resultData['text'];
 			}
 
 		});
