@@ -139,7 +139,7 @@
 		
 		function loadArticles($data) {
 			$sort = isset($_GET['sort']) ? strval($_GET['sort']) : 'erstellt';
-			$order = isset($_GET['order']) ? strval($_GET['order']) : 'asc';
+			$order = isset($_GET['order']) ? strval($_GET['order']) : 'ASC';
 			$verfasser_id = isset($_GET['verfasser_id']) ? strval($_GET['verfasser_id']) : -1;
 			$suchBegriff = isset($_GET['searchTerm']) ? strval($_GET['searchTerm']) : "";
 			$suchSpalte = isset($_GET['searchColumn']) ? strval($_GET['searchColumn']) : "";
@@ -173,13 +173,10 @@
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
 																						'.$where.' 
-																						ORDER BY :sort :order
+																						ORDER BY '.$sort.' '.$order.'
 																						LIMIT 0,50' );												
 																						
-			$dataStatement->execute(array(
-																':sort' => $sort,
-																':order' => $order,
-															));
+			$dataStatement->execute(array());
 			
 			$data = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
 			
