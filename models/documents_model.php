@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	class Documents_Model extends Model {
 
