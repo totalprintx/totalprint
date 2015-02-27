@@ -1,7 +1,8 @@
 ////////// MarkItUp //////////////
 $(document).ready(function() {
 	$("#markItUp").markItUp(mySettings);
-	
+	$("#markItUp2").markItUp(mySettings);
+
 	$(".chooser").click(function() {
 		greyOutChooser();
 		
@@ -21,9 +22,23 @@ $(document).ready(function() {
 		if(row == null)
 			alert("Es wurde kein Artikel zum Bearbeiten ausgewählt.");
 		var articleId = row.id;
+	
+		var data = {
+			'id' : articleId
+		}
 		
-	});
+		$.ajax({
+			type: "GET",
+			url: "articles/loadArticle",
+			data: data,
+			success: function(resultDataJson) {
+				var resultData = JSON.parse(resultDataJson);
+				alert(resultData['titel']);
+			}
 
+		});
+	});
+	
 	/*$("#btn_picture_upload").click(function() {
 		alert('js works');
 		$.ajax({
@@ -45,15 +60,17 @@ $(document).ready(function() {
 			$("#btn_search").trigger("click");
 			return false;
 		}
-  });
+    });
 	
 	$("#btn_search").click(function() {
 		greyOutChooser();
 		
+		var column = document.getElementById('select_column').value;
 		var search = document.getElementById('searchbox').value;
 		
 		$("#dg_articles").datagrid({method:"POST",
 																queryParams: {
+																	searchColumn: column,
 																	searchTerm: search
 																},
 																url:"articles/searchArticles"});
