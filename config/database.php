@@ -13,7 +13,8 @@ define('DB_ECMS_USER', 'bas-erp');
 define('DB_ECMS_PASS', 'erplogin');
 
 
-/*
+
+/*define('DB_TP_TYPE', 'mysql');
 define('DB_TP_HOST', 'localhost');
 define('DB_TP_NAME', 'projekt');
 define('DB_TP_USER', 'root');
