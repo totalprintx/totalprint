@@ -51,6 +51,53 @@
     </div>
 </form>
 
+
+<form action="articles/editArticle" method="post" enctype="multipart/form-data">
+    <div id="popup_edit">
+    
+        <div class="schliessen_edit">X</div>
+        
+        <div id="popup_inhalt_edit">
+            <h2 align="center">Artikel bearbeiten</h2>
+   			
+                <div class="row">
+                    <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+                    
+                    <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+
+                    <div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="rubrik_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+
+                    <div class="col-sm-3 col-md-6 col-lg-4">Ort des Geschehens</div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="ort_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+
+                    <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp2" name="text"></textarea></div>
+
+                    <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
+                    <div class="col-sm-9 col-md-6 col-lg-8">
+                        <input type="hidden" name="max_file_size" value="1000000">
+                        <input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
+                        <input type="hidden" name="max_file_size" value="1000000">
+                        <input name="userfile2" type="file" id="userfile2" style="margin-bottom: 2px;"> 
+                        <input type="hidden" name="max_file_size" value="1000000">
+                        <input name="userfile3" type="file" id="userfile3">
+                    </div>
+                </div>
+                <br>
+                <div  style="text-align:center;">
+                    <button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
+                    <button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
+                </div>
+        </div>
+    </div>
+</form>
+
+
+
+
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<div class="panel-title row">
@@ -80,10 +127,10 @@
 		
 		<div class="row" style="padding-top:20px">
 			<div class="col-md-2">
-				<button id="btn_article_create" class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
+				<button id="btn_article_create" class="btn btn-default article_create" type="submit">Neuen Artikel erstellen</button>
 			</div>
 			<div class="col-md-2">
-				<button id="btn_article_edit" class="btn btn-default" type="submit" style="float:left">Artikel bearbeiten</button>
+				<button id="btn_article_edit" class="btn btn-default article_edit" type="submit" style="float:left">Artikel bearbeiten</button>
 			</div>
 		
 			<div class="col-md-8">

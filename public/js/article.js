@@ -1,7 +1,8 @@
 ////////// MarkItUp //////////////
 $(document).ready(function() {
 	$("#markItUp").markItUp(mySettings);
-	
+	$("#markItUp2").markItUp(mySettings);
+
 	$(".chooser").click(function() {
 		greyOutChooser();
 		
@@ -15,7 +16,7 @@ $(document).ready(function() {
 	$("#chooser_newestArticles").click(function() {
 		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
 	});
-	
+	/*
 	$("#btn_article_edit").click(function() {
 		var row = $('#dg_articles').datagrid('getSelected');
 		if(row == null)
@@ -23,7 +24,7 @@ $(document).ready(function() {
 		var articleId = row.id;
 		
 	});
-
+	*/
 	/*$("#btn_picture_upload").click(function() {
 		alert('js works');
 		$.ajax({
@@ -45,7 +46,7 @@ $(document).ready(function() {
 			$("#btn_search").trigger("click");
 			return false;
 		}
-  });
+    });
 	
 	$("#btn_search").click(function() {
 		greyOutChooser();
