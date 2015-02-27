@@ -8,60 +8,32 @@
 				':bild_id' => 1,
 			));
 		}
-		
-		/*function uploadPicture($_FILES) {
-			system.out.println("some");
-			system.out.println($_FILES['userfile']['name']);
-			if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
-				$fileName = $_FILES['userfile']['name'];
-				$tmpName  = $_FILES['userfile']['tmp_name'];
-				$fileSize = $_FILES['userfile']['size'];
-				$fileType = $_FILES['userfile']['type'];
-
-				$fp      = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-
-				if(!get_magic_quotes_gpc())
-				{
-				    $fileName = addslashes($fileName);
-				}
-
-				include 'library/config.php';
-				include 'library/opendb.php';
-
-				$query = "INSERT INTO upload (name, size, type, content ) ".
-				"VALUES ('$fileName', '$fileSize', '$fileType', '$content')";
-
-				mysql_query($query) or die('Error, query failed');
-				include 'library/closedb.php';
-
-				echo "<br>File $fileName uploaded<br>";
-			} 
-		}*/
 
 		function saveArticle($data) {
 			$date = new DateTime();
 			$date = $date->format('Y-m-d');
 
 			if($data['action_type'] == "publish_article") {
-				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht)');
+				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht, :rubrik, :ort)');
 				$statement->execute(array(
 					':titel' => $data['titel'],
 					':verfasser_id' => '1',	//abfragen
 					':text' => $data['text'],
 					':veroeffentlicht' => $date,
+					':rubrik' => $data['rubrik'],
+					':ort' => $data['ort'],
 				));
 			}
 
 			if($data['action_type'] == "save_article") {
-				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, bearbeitet) VALUE (:titel, :verfasser_id, :text, :bearbeitet)');
+				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, bearbeitet, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :bearbeitet, :rubrik, :ort)');
 				$statement->execute(array(
 					':titel' => $data['titel'],
 					':verfasser_id' => '1',	//abfragen
 					':text' => $data['text'],
 					':bearbeitet' => $date,
+					':rubrik' => $data['rubrik'],
+					':ort' => $data['ort'],
 				));
 			}
 
