@@ -10,6 +10,27 @@
 		}
 
 
+		function loadArticle($data) {
+			$dataStatement = $this->db->prepare('	SELECT 	id, 
+																										titel, 
+																										rubrik,
+																										ort,
+																										erstellt, 
+																										veroeffentlicht, 
+																										bearbeitet,
+																										text
+																						FROM ecm.artikel
+																						WHERE id = :id');
+			
+			$dataStatement->execute(array(
+																':id' => $data['id'],
+															));
+			
+			$rows = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
+			
+			return json_encode($rows[0]);
+		}
+		
 		function saveArticle($data) {
 			$date = new DateTime();
 			$date = $date->format('Y-m-d');
@@ -140,7 +161,7 @@
 			return json_encode($data);
 		}
 		
-		function loadMyArticles() {
+		function loadMyArticles($id) {
 			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 
 																										ecm.artikel.titel, 
 																										ecm.artikel.verfasser_id, 
@@ -155,11 +176,13 @@
 																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
-																						WHERE ecm.artikel.verfasser_id = 1
+																						WHERE ecm.artikel.verfasser_id = :id
 																						ORDER BY erstellt DESC, titel
 																						LIMIT 0,50');
 			
-			$dataStatement->execute(array());
+			$dataStatement->execute(array(
+																':id' => $id,
+															));
 			
 			$rows = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -182,7 +205,7 @@
 																									LEFT JOIN erp.person 
 																									ON erp.mitarbeiter.person_id = erp.person.id) a
 																						WHERE '.$data['searchColumn'].' LIKE :searchTerm OR
-																									'.$data['searchColumn'].' is null
+																									"'.$data['searchTerm'].'" = ""
 																						ORDER BY erstellt DESC, titel');
 			$dataStatement->execute(array(
 															':searchTerm' => "%".$data['searchTerm']."%",
