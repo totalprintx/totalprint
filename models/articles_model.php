@@ -8,38 +8,6 @@
 				':bild_id' => 1,
 			));
 		}
-		
-		function uploadPicture($file) {
-			system.out.println("some");
-			system.out.println($file);
-			//if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
-				$fileName = $_FILES['userfile']['name'];
-				$tmpName  = $_FILES['userfile']['tmp_name'];
-				$fileSize = $_FILES['userfile']['size'];
-				$fileType = $_FILES['userfile']['type'];
-
-				$fp      = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-
-				if(!get_magic_quotes_gpc())
-				{
-				    $fileName = addslashes($fileName);
-				}
-
-				include 'library/config.php';
-				include 'library/opendb.php';
-
-				$query = "INSERT INTO upload (name, size, type, content ) ".
-				"VALUES ('$fileName', '$fileSize', '$fileType', '$content')";
-
-				mysql_query($query) or die('Error, query failed');
-				include 'library/closedb.php';
-
-				echo "<br>File $fileName uploaded<br>";
-			//} 
-		}
 
 
 		function saveArticle($data) {
@@ -68,15 +36,85 @@
 					':ort' => $data['ort'],
 				));
 			}
+			// picture upload 1
+			var_dump($_FILES['userfile1']['size']);
+			if($_FILES['userfile1']['size'] > 0) {
+				$fileName = $_FILES['userfile1']['name'];
+				$tmpName = $_FILES['userfile1']['tmp_name'];
+				$fileSize = $_FILES['userfile1']['size'];
+				$fileType = $_FILES['userfile1']['type'];
+			
+				$fp = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+			
+				if(!get_magic_quotes_gpc())
+				{
+				$fileName = addslashes($fileName);
+				}
+			
+				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+				$statement->execute(array(
+				':name' => $fileName,
+				':size' => $fileSize,
+				':type' => $fileType,
+				':content' => $content,
+				));
+			} 
+			// picture upload 2
+			if($_FILES['userfile2']['size'] > 0) {
+				$fileName = $_FILES['userfile2']['name'];
+				$tmpName = $_FILES['userfile2']['tmp_name'];
+				$fileSize = $_FILES['userfile2']['size'];
+				$fileType = $_FILES['userfile2']['type'];
+			
+				$fp = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+			
+				if(!get_magic_quotes_gpc())
+				{
+				$fileName = addslashes($fileName);
+				}
+			
+				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+				$statement->execute(array(
+				':name' => $fileName,
+				':size' => $fileSize,
+				':type' => $fileType,
+				':content' => $content,
+				));
+			} 
+
+			// picture upload 3
+			if($_FILES['userfile3']['size'] > 0) {
+				$fileName = $_FILES['userfile3']['name'];
+				$tmpName = $_FILES['userfile3']['tmp_name'];
+				$fileSize = $_FILES['userfile3']['size'];
+				$fileType = $_FILES['userfile3']['type'];
+			
+				$fp = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+			
+				if(!get_magic_quotes_gpc())
+				{
+				$fileName = addslashes($fileName);
+				}
+			
+				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+				$statement->execute(array(
+				':name' => $fileName,
+				':size' => $fileSize,
+				':type' => $fileType,
+				':content' => $content,
+				));
+			} 
 		}
 
-		/*function savePicture($data) {
-			$statement = $this->db->prepare('INSERT INTO bild (type, data) VALUE (:type, :data)');
-			$statement->execute(array(
-				':type' => 1,
-				':data' => 1,
-			));
-		}*/
 		
 		function loadNewestArticles() {
 			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 document.getElementById("uploadBtn").onchange = function () {
-    document.getElementById("uploadFile").value = this.value;
+    document.getElementById("uploadBtn").value = this.value;
 };
 
 	$("#submitsearch").click(function() {
@@ -15,5 +15,14 @@ document.getElementById("uploadBtn").onchange = function () {
 																url:"documents/searchDocuments"});
 
 	});
+
+	$("#searchbox").keypress(function(event){
+		if(event.keyCode == 10 || event.keyCode == 13) {
+			event.preventDefault();
+			$("#btn_search").trigger("click");
+			return false;
+		}
+  });
+
 });
 

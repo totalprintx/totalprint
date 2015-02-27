@@ -14,9 +14,9 @@
     z-index: 2;
     position: fixed;
     width: 80%;
-    top: 20%;
-    left: 20%;
-    margin-left: -250px;
+    top: 5%;
+    left: 15%;
+    margin-left: -5%;
     background: none repeat scroll 0 0 #FFFFFF;
     border: 8px solid #ccc;
     border-radius: 5px 5px 5px 5px;
@@ -24,7 +24,7 @@
     font-size: 14px;
     color: #000;
 }
- 
+
 div.schliessen {
     position: relative;
     height: 30px;

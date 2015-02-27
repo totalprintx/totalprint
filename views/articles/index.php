@@ -15,8 +15,7 @@
         
         <div id="popup_inhalt">
             <h2 align="center">Artikel erstellen</h2>
-   
-                	
+   			
                 <div class="row">
                     <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
                     <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%; margin-bottom: 2px;"></div>
@@ -36,7 +35,11 @@
                     <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
                     <div class="col-sm-9 col-md-6 col-lg-8">
                         <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile" type="file" id="userfile"> 
+                        <input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
+                        <input type="hidden" name="max_file_size" value="1000000">
+                        <input name="userfile2" type="file" id="userfile2" style="margin-bottom: 2px;"> 
+                        <input type="hidden" name="max_file_size" value="1000000">
+                        <input name="userfile3" type="file" id="userfile3">
                     </div>
                 </div>
                 <br>
