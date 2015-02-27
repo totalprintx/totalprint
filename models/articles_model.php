@@ -115,13 +115,6 @@
 			} 
 		}
 
-		/*function savePicture($data) {
-			$statement = $this->db->prepare('INSERT INTO bild (type, data) VALUE (:type, :data)');
-			$statement->execute(array(
-				':type' => 1,
-				':data' => 1,
-			));
-		}*/
 		
 		function loadNewestArticles() {
 			$dataStatement = $this->db->prepare('	SELECT ecm.artikel.id, titel, ecm.artikel.verfasser_id, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
