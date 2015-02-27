@@ -52,7 +52,7 @@
 </form>
 
 
-<form action="articles/editArticle" method="post" enctype="multipart/form-data">
+<form action="articles/saveArticle" method="post" enctype="multipart/form-data">
     <div id="popup_edit">
     
         <div class="schliessen_edit">X</div>
@@ -62,16 +62,16 @@
    			
                 <div class="row">
                     <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input id="titel_edit" name="titel_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
                     
                     <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input id="verfasser_edit" name="verfasser_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="rubrik_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input id="rubrik_edit" name="rubrik_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Ort des Geschehens</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="ort_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+                    <div class="col-sm-9 col-md-6 col-lg-8"><input id="ort_edit" name="ort_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
                     <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
                     <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp2" name="text"></textarea></div>
@@ -136,7 +136,7 @@
 			<div class="col-md-8">
 				<div class="input-group" style='width:100%;float:right'>
 					<form enctype="multipart/form-data" class="input-group">
-						<select id="select_column" class="form-control" style="width:20%;height:34px;float:right">
+						<select id="select_column" class="form-control" style="width:20%;height:34px;float:right;z-index:0;">
 							<option value="id">Nr.</option>
 							<option value="titel" selected="selected">Titel</option>
 							<option value="verfasser">Verf.</option>
@@ -146,7 +146,7 @@
 							<option value="veroeffentlicht">Veröffentlicht</option>
 							<option value="bearbeitet">Zuletzt bearbeitet</option>
 						</select>
-						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right" class="form-control" placeholder="Durchsuchen..." onFocus="this.value=''">
+						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right;z-index:0;" class="form-control" placeholder="Durchsuchen..." onFocus="this.value=''">
 						<span class="input-group-btn">
 							<a id="btn_search" class="btn btn-default" style="width:50px;height:34px">Go!</a>
 						</span>
