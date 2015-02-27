@@ -45,36 +45,21 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<div class="panel-title row">
-		
-			<div class="col-md-3">
+			<div class="col-md-1">
 				<div id="title"><h4><b>Artikel</b></h4></div>
 			</div>
 			
-			<div class="col-md-6">
-				<div class="col-md-6">
-					<button id="btn_article_edit" class="btn btn-default" type="submit" style="float:right">Artikel bearbeiten</button>
-				</div>
-				<div class="col-md-6">
-					<!-- OPEN POPUP -->
-					<button id="btn_article_create" class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
-				</div>
-			</div>
+			<div class="col-md-11">
+
 			
-			<div class="col-md-3">
-				<div class="input-group" style='float:right'>
-					<form enctype="multipart/form-data" class="input-group">
-						<input name="searchbox" id="searchbox" type="search" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
-						<span class="input-group-btn">
-							<a id="btn_search" class="btn btn-default">Go!</a>
-						</span>
-					</form>
+				<div class="col-md-8">
+					
 				</div>
 			</div>
 			
 		</div>
 	</div>
 	<div id="main" class="panel-body" style="height:auto">
-		
 		<style>
 			.chooser {
 				cursor: pointer;
@@ -83,14 +68,40 @@
 			}
 		</style>
 		
-		<div class="col-md-6">
-			<div class="chooser" id="chooser_newestArticles" align="right" style="color:#337AB7">Neueste Artikel</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="chooser" id="chooser_newestArticles" align="right" style="color:#337AB7">Neueste Artikel</div>
+			</div>
+				
+			<div class="col-md-6">
+				<div class="chooser" id="chooser_myArticles" style="color:grey">Meine Artikel</div>
+			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<button id="btn_article_create" class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
+			</div>
+			<div class="col-md-2">
+				<button id="btn_article_edit" class="btn btn-default" type="submit" style="float:left">Artikel bearbeiten</button>
+			</div>
 		
-		<div class="col-md-6">
-			<div class="chooser" id="chooser_myArticles" style="color:grey">Meine Artikel</div>
+			<div class="col-md-8">
+				<div class="input-group" style='width:100%;float:right'>
+					<form enctype="multipart/form-data" class="input-group">
+						<select style="width:20%;height:34px;float:right">
+							<option value="nr">Nr.</option>
+							<option value="title" selected="selected">Titel</option>
+							<option value="author">Verf.</option>
+							<option value="created">Erstellt</option>
+						</select>
+						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
+						<span class="input-group-btn">
+							<a id="btn_search" class="btn btn-default" style="width:50px;height:34px">Go!</a>
+						</span>
+					</form>
+				</div>
+			</div>
 		</div>
-		
 		<table 	id="dg_articles" 
 						class="easyui-datagrid" 
 						style="width:100%"
