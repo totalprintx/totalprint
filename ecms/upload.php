@@ -2,8 +2,8 @@
 require '_mysql.php';
 
 $target_dir = "../tp_storage/";
-$file = pathinfo($_FILES['fileToUpload']['name']);
-
+/*$file = pathinfo($_FILES['fileToUpload']['name']);
+*/
 
 // if everything is ok, try to upload file
 /*if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -16,7 +16,7 @@ $file = pathinfo($_FILES['fileToUpload']['name']);
 */
 
 //DB
-$con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
+/*$con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
 if (!$con) {
     die("<br/>Fehlgeschlagen: " . mysqli_connect_error());
 }
@@ -37,6 +37,23 @@ if (mysqli_query($con, $sql)) {
 } else { 
 	mysqli_close($con);
     header('Location: storage.php?message=Sorry, there was an error uploading your file.');
+}*/
+print_r($_FILES);
+echo "<hr/>";
+foreach($_FILES as $file){
+  foreach($file as $f){
+  print_r($f); 
+  echo "<br/>";
+    }
 }
 
+echo "<br/>";
+echo "<hr/>";
+echo "<br/>";
+
+foreach ($_FILES['filesToUpload']['name'] as $f => $name) {             
+            
+            echo pathinfo($name, PATHINFO_FILENAME) . " - " . $_FILES["filesToUpload"]["tmp_name"][$f] . " - " . $_FILES["filesToUpload"]["type"][$f] . "<br/>";
+        
+    }
 ?> 

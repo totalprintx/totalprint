@@ -38,7 +38,7 @@
         				<thead>
             				<tr>
                 				<th field="Nr" width="5%" sortable="true">Nr.</th>
-                				<th field="Titel" width="25%" sortable="true" sortable="true">Titel</th>
+                				<th field="Titel" width="25%" sortable="true">Titel</th>
 					            <th field="Dateityp" width="10%" align="right" sortable="true">Dateityp</th>
 					            <th field="Kategorie" width="20%" align="center" sortable="true">Kategorie</th>
 					            <th field="Ersteller" width="20%" align="right" sortable="true">Ersteller</th>
@@ -59,15 +59,9 @@
         		<div class="panel-body">
                 <center>
         			<form action="documents/uploadFiles" method="post" enctype="multipart/form-data">
-                        <ul id="filesToUpload">
-                        </ul>
-                            <!-- <input id="uploadFile" placeholder="Choose File" disabled="disabled" /> -->
-                            <div class="fileUpload btn btn-primary">
-                                <span>Datei auswälen</span>
-                                <input id="uploadBtn" type="file" class="upload" />
-                            </div>
 
-                        <!--  <input type="file" name="fileToUpload" id="fileToUpload"> -->
+                        <input type="file" id="filesToUpload" name="filesToUpload[]" multiple="multiple"/>
+                        
                         <br/>Zielverzeichnis:<br/>
                             <select id="uploadTargetDir" name="uploadTargetDir" size="1"></select>
                         <br/>
@@ -78,22 +72,22 @@
         	</div>
         	<div id="" class="panel panel-primary">
         		<div class="panel-heading">
-        			<h3 class="panel-title">Datei Infos</h3>
+        			<h3 class="panel-title">Datei Download</h3>
         		</div>
-        		<div class="panel-body">
-                <?php 
-    
-        echo $this->messageBox;
-?>
-        			Keine Datei ausgewählt
+        		<div id="fileInfoBox" class="panel-body">
+        			<ul id="fileHistory" style="padding: 5px; list-style:none">
+                        <li>Keine Datei ausgew&auml;hlt!</li>
+                    </ul>
         		</div>
         	</div>
             <div id="" class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Verzeichnis Optionen</h3>
+                    <h3 class="panel-title">Optionen</h3>
                 </div>
                 <div class="panel-body">
                     <ul style="padding: 5px">
+                        <li><a href="#" onclick="deleteFile();return false;">Datei Löschen</a></li>
+                        <li><a href="#">Datei verschieben</a></li>
                         <li><a href="#">Neues Verzeichnis erstellen</a></li>
                         <li><a href="#">Verzeichnis verschieben</a></li>
                         <li><a href="#" onclick="deleteDir();return false;">Verzeichnis löschen</a></li>
