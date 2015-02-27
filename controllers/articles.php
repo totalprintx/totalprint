@@ -23,11 +23,6 @@ class Articles extends Controller {
 		$this->model->saveArticle($_POST);
 		header('Location: ' . URL . 'articles');
 	}
-	
-	function uploadPicture() {
-		var_dump("articles works");
-		$this->model->uploadPicture($_POST);
-	}
 
 	function loadMyArticles() {
 		echo $this->model->loadMyArticles($_GET);

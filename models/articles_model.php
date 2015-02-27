@@ -8,38 +8,6 @@
 				':bild_id' => 1,
 			));
 		}
-		
-		function uploadPicture($file) {
-			system.out.println("some");
-			system.out.println($file);
-			//if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
-				$fileName = $_FILES['userfile']['name'];
-				$tmpName  = $_FILES['userfile']['tmp_name'];
-				$fileSize = $_FILES['userfile']['size'];
-				$fileType = $_FILES['userfile']['type'];
-
-				$fp      = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-
-				if(!get_magic_quotes_gpc())
-				{
-				    $fileName = addslashes($fileName);
-				}
-
-				include 'library/config.php';
-				include 'library/opendb.php';
-
-				$query = "INSERT INTO upload (name, size, type, content ) ".
-				"VALUES ('$fileName', '$fileSize', '$fileType', '$content')";
-
-				mysql_query($query) or die('Error, query failed');
-				include 'library/closedb.php';
-
-				echo "<br>File $fileName uploaded<br>";
-			//} 
-		}
 
 
 		function saveArticle($data) {
@@ -68,6 +36,44 @@
 					':ort' => $data['ort'],
 				));
 			}
+
+			//var_dump($_FILES['userfile']['name']);
+			//if($_FILES['userfile']['size'] > 0) {
+			var_dump("expression articles_model");
+			$fileName = $_FILES['userfile']['name'];
+			$tmpName = $_FILES['userfile']['tmp_name'];
+			$fileSize = $_FILES['userfile']['size'];
+			$fileType = $_FILES['userfile']['type'];
+		
+			$fp = fopen($tmpName, 'r');
+			$content = fread($fp, filesize($tmpName));
+			$content = addslashes($content);
+			fclose($fp);
+		
+			if(!get_magic_quotes_gpc())
+			{
+			$fileName = addslashes($fileName);
+			}
+		
+			$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+			$statement->execute(array(
+			':name' => $fileName,
+			':size' => $fileSize,
+			':type' => $fileType,
+			':content' => $content,
+			));
+		
+		
+			/*
+			$query = "INSERT INTO upload (name, size, type, content ) ".
+			"VALUES ('$fileName', '$fileSize', '$fileType', '$content')";
+		
+			mysql_query($query) or die('Error, query failed');
+			include 'library/closedb.php';
+		
+			echo "<br>File $fileName uploaded<br>";
+			*/
+			//} 
 		}
 
 		/*function savePicture($data) {
