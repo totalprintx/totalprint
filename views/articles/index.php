@@ -54,15 +54,6 @@
 			<div class="col-md-1">
 				<div id="title"><h4><b>Artikel</b></h4></div>
 			</div>
-			
-			<div class="col-md-11">
-
-			
-				<div class="col-md-8">
-					
-				</div>
-			</div>
-			
 		</div>
 	</div>
 	<div id="main" class="panel-body" style="height:auto">
@@ -83,7 +74,8 @@
 				<div class="chooser" id="chooser_myArticles" style="color:grey">Meine Artikel</div>
 			</div>
 		</div>
-		<div class="row">
+		
+		<div class="row" style="padding-top:20px">
 			<div class="col-md-2">
 				<button id="btn_article_create" class="btn btn-default popup_oeffnen" type="submit">Neuen Artikel erstellen</button>
 			</div>
@@ -94,13 +86,17 @@
 			<div class="col-md-8">
 				<div class="input-group" style='width:100%;float:right'>
 					<form enctype="multipart/form-data" class="input-group">
-						<select style="width:20%;height:34px;float:right">
-							<option value="nr">Nr.</option>
-							<option value="title" selected="selected">Titel</option>
-							<option value="author">Verf.</option>
-							<option value="created">Erstellt</option>
+						<select id="select_column" class="form-control" style="width:20%;height:34px;float:right">
+							<option value="id">Nr.</option>
+							<option value="titel" selected="selected">Titel</option>
+							<option value="verfasser">Verf.</option>
+							<option value="rubrik">Rubrik</option>
+							<option value="ort">Ort</option>
+							<option value="erstellt">Erstellt</option>
+							<option value="veroeffentlicht">Veröffentlicht</option>
+							<option value="bearbeitet">Zuletzt bearbeitet</option>
 						</select>
-						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right" class="form-control" placeholder="Artikel suchen..." onFocus="this.value=''">
+						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right" class="form-control" placeholder="Durchsuchen..." onFocus="this.value=''">
 						<span class="input-group-btn">
 							<a id="btn_search" class="btn btn-default" style="width:50px;height:34px">Go!</a>
 						</span>
@@ -108,6 +104,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<table 	id="dg_articles" 
 						class="easyui-datagrid" 
 						style="width:100%"
@@ -118,11 +115,13 @@
       <thead>
 				<tr>
 					<th field="id" width="5%" sortable="true">Nr.</th>
-					<th field="titel" width="40%" sortable="true">Titel</th>
-					<th field="verfasser" width="19%" sortable="true">Verfasser</th>
-					<th field="erstellt" width="12%" sortable="true">Erstellt</th>
-					<th field="veroeffentlicht" width="12%" sortable="true">Veröffentlicht</th>
-					<th field="bearbeitet" width="12%" sortable="true">Zuletzt bearbeitet</th>
+					<th field="titel" width="20%" sortable="true">Titel</th>
+					<th field="verfasser" width="15%" sortable="true">Verfasser</th>
+					<th field="rubrik" width="10%" sortable="true">Rubrik</th>
+					<th field="ort" width="10%" sortable="true">Ort</th>
+					<th field="erstellt" width="14%" sortable="true">Erstellt</th>
+					<th field="veroeffentlicht" width="14%" sortable="true">Veröffentlicht</th>
+					<th field="bearbeitet" width="14%" sortable="true">Zuletzt bearbeitet</th>
 				</tr>
 			</thead>			
 		</table>

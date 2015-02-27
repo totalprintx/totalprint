@@ -50,10 +50,12 @@ $(document).ready(function() {
 	$("#btn_search").click(function() {
 		greyOutChooser();
 		
+		var column = document.getElementById('select_column').value;
 		var search = document.getElementById('searchbox').value;
 		
 		$("#dg_articles").datagrid({method:"POST",
 																queryParams: {
+																	searchColumn: column,
 																	searchTerm: search
 																},
 																url:"articles/searchArticles"});

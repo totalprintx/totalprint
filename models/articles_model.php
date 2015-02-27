@@ -79,14 +79,20 @@
 		}*/
 		
 		function loadNewestArticles() {
-			$dataStatement = $this->db->prepare('	SELECT ecm.artikel.id, titel, ecm.artikel.verfasser_id, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
+			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 
+																										ecm.artikel.titel, 
+																										CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser, 
+																										ecm.artikel.rubrik,
+																										ecm.artikel.ort,
+																										ecm.artikel.erstellt, 
+																										ecm.artikel.veroeffentlicht, 
+																										ecm.artikel.bearbeitet 
 																						FROM ecm.artikel
 																						LEFT JOIN erp.mitarbeiter
 																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
-																						ORDER BY erstellt
-																						DESC
+																						ORDER BY erstellt DESC, titel
 																						LIMIT 0,50' );
 			
 			$dataStatement->execute(array());
@@ -97,15 +103,22 @@
 		}
 		
 		function loadMyArticles() {
-			$dataStatement = $this->db->prepare('	SELECT ecm.artikel.id, titel, ecm.artikel.verfasser_id, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
+			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 
+																										ecm.artikel.titel, 
+																										ecm.artikel.verfasser_id, 
+																										CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser,
+																										ecm.artikel.rubrik,
+																										ecm.artikel.ort,
+																										ecm.artikel.erstellt, 
+																										ecm.artikel.veroeffentlicht, 
+																										ecm.artikel.bearbeitet 
 																						FROM ecm.artikel
 																						LEFT JOIN erp.mitarbeiter
 																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
 																						WHERE ecm.artikel.verfasser_id = 1
-																						ORDER BY erstellt
-																						DESC
+																						ORDER BY erstellt DESC, titel
 																						LIMIT 0,50');
 			
 			$dataStatement->execute(array());
@@ -116,15 +129,23 @@
 		}
 		
 		function searchArticles($data) {
-			$dataStatement = $this->db->prepare('	SELECT ecm.artikel.id, titel, ecm.artikel.verfasser_id, CONCAT(vorname, nachname) as verfasser, erstellt, veroeffentlicht, bearbeitet 
-																						FROM ecm.artikel
-																						LEFT JOIN erp.mitarbeiter
-																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
-																						LEFT JOIN erp.person 
-																						ON erp.mitarbeiter.person_id = erp.person.id
-																						WHERE ecm.artikel.verfasser_id = 1 AND ecm.artikel.titel LIKE :searchTerm
-																						ORDER BY erstellt
-																						DESC');
+			$dataStatement = $this->db->prepare('	SELECT * 
+																						FROM (SELECT 	ecm.artikel.id as id, 
+																													ecm.artikel.titel as titel,
+																													CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser,
+																													ecm.artikel.rubrik as rubrik,
+																													ecm.artikel.ort as ort,
+																													ecm.artikel.erstellt as erstellt, 
+																													ecm.artikel.veroeffentlicht as veroeffentlicht, 
+																													ecm.artikel.bearbeitet as bearbeitet
+																									FROM ecm.artikel
+																									LEFT JOIN erp.mitarbeiter
+																									ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
+																									LEFT JOIN erp.person 
+																									ON erp.mitarbeiter.person_id = erp.person.id) a
+																						WHERE '.$data['searchColumn'].' LIKE :searchTerm OR
+																									'.$data['searchColumn'].' is null
+																						ORDER BY erstellt DESC, titel');
 			$dataStatement->execute(array(
 															':searchTerm' => "%".$data['searchTerm']."%",
 															));
