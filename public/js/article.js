@@ -17,15 +17,34 @@ $(document).ready(function() {
 	});
 	
 	$("#btn_article_edit").click(function() {
-		alert("EDIT");
+		var row = $('#dg_articles').datagrid('getSelected');
+		if(row == null)
+			alert("Es wurde kein Artikel zum Bearbeiten ausgewählt.");
+		var articleId = row.id;
+		
 	});
+
+	/*$("#btn_picture_upload").click(function() {
+		alert('js works');
+		$.ajax({
+				type: "POST",
+				url: "articles/uploadPicture",
+				dataType: 'json',
+				data: "",
+				success: function(resultData) {
+					alert("Marcel ist fett");
+				}
+
+			});
+	});
+	*/
 	
 	$("#searchbox").keypress(function(event){
-    if(event.keyCode == 10 || event.keyCode == 13) {
-      event.preventDefault();
+		if(event.keyCode == 10 || event.keyCode == 13) {
+			event.preventDefault();
 			$("#btn_search").trigger("click");
-      return false;
-    }
+			return false;
+		}
   });
 	
 	$("#btn_search").click(function() {
