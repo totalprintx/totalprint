@@ -61,17 +61,18 @@
         			<form action="documents/uploadFiles" method="post" enctype="multipart/form-data">
                         <ul id="filesToUpload">
                         </ul>
-                            <!-- <input id="uploadFile" placeholder="Choose File" disabled="disabled" /> -->
-                            <div class="fileUpload btn btn-primary">
-                                <span>Datei auswälen</span>
-                                <input id="uploadBtn" type="file" class="upload" />
-                            </div>
+                            
+                            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                                <div class="fileUpload btn btn-primary">
+                                    <span class="uploadBtn">Datei auswählen</span>
+                                    <input id="uploadBtn" type="file" class="upload" />
+                                </div>
 
                         <!--  <input type="file" name="fileToUpload" id="fileToUpload"> -->
                         <br/>Zielverzeichnis:<br/>
                             <select id="uploadTargetDir" name="uploadTargetDir" size="1"></select>
                         <br/>
-                        <input type="submit" value="Hochladen" name="submit" class="btn btn-primary">
+                        <input type="submit" id="fileToUpload" value="Hochladen" name="submit" class="btn btn-primary">
                     </form>
                     </center>
         		</div>
