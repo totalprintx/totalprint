@@ -137,7 +137,28 @@
 		}
 
 		
-		function loadNewestArticles() {
+		function loadArticles($data) {
+			$sort = isset($_GET['sort']) ? strval($_GET['sort']) : 'erstellt';
+			$order = isset($_GET['order']) ? strval($_GET['order']) : 'asc';
+			$verfasser_id = isset($_GET['verfasser_id']) ? strval($_GET['verfasser_id']) : -1;
+			$suchBegriff = isset($_GET['searchTerm']) ? strval($_GET['searchTerm']) : "";
+			$suchSpalte = isset($_GET['searchColumn']) ? strval($_GET['searchColumn']) : "";
+			
+			$where = 'WHERE ';
+			$condition1 = 'ecm.artikel.verfasser_id ='.$verfasser_id;
+			$condition2 = $suchSpalte.' LIKE "%'.$suchBegriff.'%"';
+			if($verfasser_id != -1)
+				$where = $where.$condition1;
+				
+			if($suchBegriff != ""){
+				if($verfasser_id != -1)
+					$where = $where.' AND ';
+				$where = $where.$condition2;
+			}
+			
+			if($verfasser_id == -1 && $suchBegriff == "")
+				$where = "";
+			
 			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 
 																										ecm.artikel.titel, 
 																										CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser, 
@@ -151,67 +172,17 @@
 																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
 																						LEFT JOIN erp.person 
 																						ON erp.mitarbeiter.person_id = erp.person.id
-																						ORDER BY erstellt DESC, titel
-																						LIMIT 0,50' );
-			
-			$dataStatement->execute(array());
+																						'.$where.' 
+																						ORDER BY :sort :order
+																						LIMIT 0,50' );												
+																						
+			$dataStatement->execute(array(
+																':sort' => $sort,
+																':order' => $order,
+															));
 			
 			$data = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
 			
 			return json_encode($data);
-		}
-		
-		function loadMyArticles($id) {
-			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 
-																										ecm.artikel.titel, 
-																										ecm.artikel.verfasser_id, 
-																										CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser,
-																										ecm.artikel.rubrik,
-																										ecm.artikel.ort,
-																										ecm.artikel.erstellt, 
-																										ecm.artikel.veroeffentlicht, 
-																										ecm.artikel.bearbeitet 
-																						FROM ecm.artikel
-																						LEFT JOIN erp.mitarbeiter
-																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
-																						LEFT JOIN erp.person 
-																						ON erp.mitarbeiter.person_id = erp.person.id
-																						WHERE ecm.artikel.verfasser_id = :id
-																						ORDER BY erstellt DESC, titel
-																						LIMIT 0,50');
-			
-			$dataStatement->execute(array(
-																':id' => $id,
-															));
-			
-			$rows = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
-			
-			return json_encode($rows);
-		}
-		
-		function searchArticles($data) {
-			$dataStatement = $this->db->prepare('	SELECT * 
-																						FROM (SELECT 	ecm.artikel.id as id, 
-																													ecm.artikel.titel as titel,
-																													CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser,
-																													ecm.artikel.rubrik as rubrik,
-																													ecm.artikel.ort as ort,
-																													ecm.artikel.erstellt as erstellt, 
-																													ecm.artikel.veroeffentlicht as veroeffentlicht, 
-																													ecm.artikel.bearbeitet as bearbeitet
-																									FROM ecm.artikel
-																									LEFT JOIN erp.mitarbeiter
-																									ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
-																									LEFT JOIN erp.person 
-																									ON erp.mitarbeiter.person_id = erp.person.id) a
-																						WHERE '.$data['searchColumn'].' LIKE :searchTerm OR
-																									"'.$data['searchTerm'].'" = ""
-																						ORDER BY erstellt DESC, titel');
-			$dataStatement->execute(array(
-															':searchTerm' => "%".$data['searchTerm']."%",
-															));
-			$rows = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
-			
-			return json_encode($rows);
 		}
 	}

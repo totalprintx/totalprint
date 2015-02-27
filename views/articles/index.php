@@ -158,20 +158,20 @@
 		<table 	id="dg_articles" 
 						class="easyui-datagrid" 
 						style="width:100%"
-						url="articles/loadNewestArticles"
+						url="articles/loadArticles"
 						method="get"
 						rownumbers="false" pagination="false"
 						singleSelect="true">
       <thead>
 				<tr>
-					<th field="id" width="5%" sortable="true">Nr.</th>
-					<th field="titel" width="20%" sortable="true">Titel</th>
-					<th field="verfasser" width="15%" sortable="true">Verfasser</th>
-					<th field="rubrik" width="10%" sortable="true">Rubrik</th>
-					<th field="ort" width="10%" sortable="true">Ort</th>
-					<th field="erstellt" width="14%" sortable="true">Erstellt</th>
+					<th field="id" width="5%" 							sortable="true">Nr.</th>
+					<th field="titel" width="20%" 					sortable="true">Titel</th>
+					<th field="verfasser" width="15%" 			sortable="true">Verfasser</th>
+					<th field="rubrik" width="10%" 					sortable="true">Rubrik</th>
+					<th field="ort" width="10%" 						sortable="true">Ort</th>
+					<th field="erstellt" width="14%" 				sortable="true">Erstellt</th>
 					<th field="veroeffentlicht" width="14%" sortable="true">Veröffentlicht</th>
-					<th field="bearbeitet" width="14%" sortable="true">Zuletzt bearbeitet</th>
+					<th field="bearbeitet" width="14%" 			sortable="true">Zuletzt bearbeitet</th>
 				</tr>
 			</thead>			
 		</table>

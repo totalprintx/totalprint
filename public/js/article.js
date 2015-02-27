@@ -10,11 +10,21 @@ $(document).ready(function() {
 	});
 	
 	$("#chooser_myArticles").click(function() {
-		$("#dg_articles").datagrid({url:"articles/loadMyArticles"});
+		$("#dg_articles").datagrid({method:"GET",
+																queryParams: {
+																	verfasser_id: 1,
+																	searchColumn: "",
+																	searchTerm: ""
+																}});
 	});
 	
 	$("#chooser_newestArticles").click(function() {
-		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
+		$("#dg_articles").datagrid({method:"GET",
+																queryParams: {
+																	verfasser_id: -1,
+																	searchColumn: "",
+																	searchTerm: ""
+																}});
 	});
 	
 	$("#btn_article_edit").click(function() {
@@ -34,6 +44,7 @@ $(document).ready(function() {
 			success: function(resultDataJson) {
 				var resultData = JSON.parse(resultDataJson);
 				alert(resultData['titel']);
+				$('#')
 			}
 
 		});
@@ -68,12 +79,12 @@ $(document).ready(function() {
 		var column = document.getElementById('select_column').value;
 		var search = document.getElementById('searchbox').value;
 		
-		$("#dg_articles").datagrid({method:"POST",
+		$("#dg_articles").datagrid({method:"GET",
 																queryParams: {
+																	verfasser_id: -1,
 																	searchColumn: column,
 																	searchTerm: search
-																},
-																url:"articles/searchArticles"});
+																}});
 	});
 });
 

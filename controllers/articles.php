@@ -19,24 +19,16 @@ class Articles extends Controller {
 		header('Location: ' . URL . 'articles');
 	}
 	
-	function loadArticle() {
-		echo $this->model->loadArticle($_GET);
-	}
-	
 	function saveArticle() {
 		$this->model->saveArticle($_POST);
 		header('Location: ' . URL . 'articles');
 	}
 
-	function loadMyArticles() {
-		echo $this->model->loadMyArticles(Session::get("id"));
+	function loadArticle() {
+		echo $this->model->loadArticle($_GET);
 	}
 	
-	function loadNewestArticles() {
-		echo $this->model->loadNewestArticles();
-	}
-	
-	function searchArticles() {
-		echo $this->model->searchArticles($_POST);
+	function loadArticles() {
+		echo $this->model->loadArticles($_GET);
 	}
 }
