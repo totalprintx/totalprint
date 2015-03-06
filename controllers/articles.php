@@ -4,6 +4,10 @@ class Articles extends Controller {
 
 	function __construct() {
 		parent::__construct();
+		Session::init();
+		if(Session::get("loggedIn") == false){
+			header('location:http://lvps87-230-14-183.dedicated.hosteurope.de/login');
+		}
 	}
 	
 	function index() {
@@ -29,6 +33,8 @@ class Articles extends Controller {
 	}
 	
 	function loadArticles() {
+		if(isset($_GET['verfasser_id']) && $_GET['verfasser_id'] == 0)
+			$_GET['verfasser_id'] = Session::get('user_id');
 		echo $this->model->loadArticles($_GET);
 	}
 }
