@@ -74,6 +74,9 @@
 
 				<div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
 				<div class="col-sm-9 col-md-6 col-lg-8">
+					<input id="picture1" style="background-color:#FFFFFF; border: 0px solid #FFFFFF; margin-bottom: 2px;"> </br>
+					<input id="picture2" style="background-color:#FFFFFF; border: 0px solid #FFFFFF; margin-bottom: 2px;"> </br>
+					<input id="picture3" style="background-color:#FFFFFF; border: 0px solid #FFFFFF;"> </br>
 					<input type="hidden" name="max_file_size" value="1000000">
 					<input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
 					<input type="hidden" name="max_file_size" value="1000000">

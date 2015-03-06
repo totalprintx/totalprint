@@ -27,6 +27,10 @@ class Articles extends Controller {
 	function loadArticle() {
 		echo $this->model->loadArticle($_GET);
 	}
+
+	function loadPictures() {
+		echo $this->model->loadPictures($_GET);
+	}
 	
 	function loadArticles() {
 		echo $this->model->loadArticles($_GET);

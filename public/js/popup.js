@@ -35,6 +35,8 @@ jQuery(function($) {
 					data: data,
 					success: function(resultDataJson) {
 						var resultData = JSON.parse(resultDataJson);
+                        alert('Hallo');
+                        alert(resultData['titel']);
 						document.getElementById('titel_edit').value = resultData['titel'];
 						document.getElementById('verfasser_edit').value = row.verfasser;
 						document.getElementById('rubrik_edit').value = resultData['rubrik'];
@@ -42,6 +44,25 @@ jQuery(function($) {
 						document.getElementById('markItUp2').value = resultData['text'];
 					}
 				});
+
+                $.ajax({
+                    type: "GET",
+                    url: "articles/loadPictures",
+                    data: data,
+                    success: function(resultDataJson) {
+                        var obj = JSON.parse(resultDataJson);
+                        if(obj.length >= 1){
+                            document.getElementById('picture1').value = obj[0].name;               
+                        }
+                        if(obj.length >= 2){
+                            document.getElementById('picture2').value = obj[1].name;               
+                        }
+                        if(obj.length >= 3){
+                            document.getElementById('picture3').value = obj[2].name;               
+                        }
+                        
+                    }
+                });
 			}
     });
  

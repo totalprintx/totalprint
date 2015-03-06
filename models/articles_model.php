@@ -11,24 +11,37 @@
 
 
 		function loadArticle($data) {
-			$dataStatement = $this->db->prepare('	SELECT 	id, 
-																										titel, 
-																										rubrik,
-																										ort,
-																										erstellt, 
-																										veroeffentlicht, 
-																										bearbeitet,
-																										text
-																						FROM ecm.artikel
-																						WHERE id = :id');
+			$dataStatement = $this->db->prepare('SELECT	id, 
+				titel, 
+				rubrik,
+				ort,
+				erstellt, 
+				veroeffentlicht, 
+				bearbeitet,
+				text
+				FROM ecm.artikel
+				WHERE id = :id');
 			
 			$dataStatement->execute(array(
-																':id' => $data['id'],
-															));
+				':id' => $data['id'],
+			));
 			
 			$rows = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
 			
 			return json_encode($rows[0]);
+		}
+
+		function loadPictures($data) {
+
+			$dataStatement = $this->db->prepare('SELECT	name FROM ecm.bild WHERE artikel_id = :id');
+			
+			$dataStatement->execute(array(
+				':id' => $data['id'],
+			));
+			
+			$rows = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
+			
+			return json_encode($rows);
 		}
 		
 		function pictureupload($fileName, $tmpName, $fileSize, $fileType, $artikel_id) {
