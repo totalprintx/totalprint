@@ -42,7 +42,4 @@ class Articles extends Controller {
 		echo $this->model->loadArticles($_GET);
 	}
 
-	function getStaff() {
-		echo $this->model->getStaff($_GET);
-	}
 }

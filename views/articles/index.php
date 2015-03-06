@@ -21,11 +21,13 @@
 						<div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
 						<div class="col-sm-9 col-md-6 col-lg-8">
 
- 						<select id="verfasser" name="verfasser" size="1">
-							<option></option>
-						</select>
+						<form>
+	 						<select id="verfasser" name="verfasser" size="1">
+								<option></option>
+							</select>
+						</form>
 
-						<!-- <input name="verfasser" type="text" style="width:100%; margin-bottom: 2px;"></div> -->
+						<input name="verfasser" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
 						<div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
 						<div class="col-sm-9 col-md-6 col-lg-8"><input name="rubrik" type="text" style="width:100%; margin-bottom: 2px;"></div>
