@@ -3,19 +3,23 @@
 	class Documents_Model extends Model {
 
 		function searchDocuments($data) {
-			$statement = $this->db->prepare('SELECT s.id as Nr, 
-													s.title as Titel, 
-													s.file_ext as Dateityp, 
-													d.title as Kategorie, 
-													s.author_id as Ersteller, 
-													s.upload_date as Erstellungsdatum 
-											FROM 	storage s,
-												 	directories d 
-											WHERE 	s.category_id = d.dir_id 
-											AND 	(s.title LIKE :searchterm1
-											OR 		d.title LIKE :searchterm2
-											OR 		s.upload_date LIKE :searchterm3) 
-											order by upload_date ASC');
+			$statement = $this->db->prepare('SELECT		ecm.storage.id as Nr, 
+														ecm.storage.title as Titel, 
+            											ecm.storage.file_ext as Dateityp, 
+											            ecm.directories.title as Kategorie, 
+											            CONCAT(erp.person.vorname, " ", erp.person.nachname) as Ersteller, 
+											            ecm.storage.upload_date as Erstellungsdatum 
+											FROM 		ecm.storage 
+											INNER JOIN 	ecm.directories 
+											ON 			ecm.storage.category_id = ecm.directories.dir_id
+											LEFT JOIN 	erp.mitarbeiter
+											ON 			ecm.storage.author_id = erp.mitarbeiter.id
+											LEFT JOIN 	erp.person 
+											ON 			erp.mitarbeiter.person_id = erp.person.id
+											WHERE 		(ecm.storage.title LIKE :searchterm1
+											OR 			ecm.directories.title LIKE :searchterm2
+											OR 			ecm.storage.upload_date LIKE :searchterm3) 
+											ORDER BY 	ecm.storage.upload_date ASC ');
 
 			$statement->execute(array(
 										':searchterm1' => "%".$data['searchTerm']."%",
