@@ -38,7 +38,7 @@
 				<li><a id="a_documents" href="documents">Dokumente</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/profile">Profil</a></li>
+				<li><a href="<?php echo URL; ?>logout">Logout</a></li>
 			</ul>
     </div><!--/.nav-collapse -->
 	</nav>

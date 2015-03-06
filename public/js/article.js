@@ -19,7 +19,12 @@ $(document).ready(function() {
 	});
 	
 	$("#chooser_newestArticles").click(function() {
-		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
+		$("#dg_articles").datagrid({method:"GET",
+																queryParams: {
+																	verfasser_id: -1,
+																	searchColumn: "",
+																	searchTerm: ""
+																}});
 	});
 	
 	$("#searchbox").keypress(function(event){
@@ -36,12 +41,13 @@ $(document).ready(function() {
 		var column = document.getElementById('select_column').value;
 		var search = document.getElementById('searchbox').value;
 		
-		$("#dg_articles").datagrid({method:"POST",
+		$("#dg_articles").datagrid({method:"GET",
 																queryParams: {
+																	verfasser_id: -1,
 																	searchColumn: column,
 																	searchTerm: search
 																},
-																url:"articles/searchArticles"});
+																url:"articles/loadArticles"});
 	});
 });
 

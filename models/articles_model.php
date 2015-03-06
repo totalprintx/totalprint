@@ -133,38 +133,33 @@
 			$verfasser_id = isset($_GET['verfasser_id']) ? strval($_GET['verfasser_id']) : -1;
 			$suchBegriff = isset($_GET['searchTerm']) ? strval($_GET['searchTerm']) : "";
 			$suchSpalte = isset($_GET['searchColumn']) ? strval($_GET['searchColumn']) : "";
+
+			$condition1 = 'WHERE ecm.artikel.verfasser_id ='.$verfasser_id;
+			$condition2 = 'WHERE '.$suchSpalte.' LIKE "%'.$suchBegriff.'%"';
+			if($verfasser_id == -1)
+				$condition1 = '';
 			
-			$where = 'WHERE ';
-			$condition1 = 'ecm.artikel.verfasser_id ='.$verfasser_id;
-			$condition2 = $suchSpalte.' LIKE "%'.$suchBegriff.'%"';
-			if($verfasser_id != -1)
-				$where = $where.$condition1;
+			if($suchSpalte == "")
+				$condition2 = '';
 				
-			if($suchBegriff != ""){
-				if($verfasser_id != -1)
-					$where = $where.' AND ';
-				$where = $where.$condition2;
-			}
-			
-			if($verfasser_id == -1 && $suchBegriff == "")
-				$where = "";
-			
-			$dataStatement = $this->db->prepare('	SELECT 	ecm.artikel.id, 
-																										ecm.artikel.titel, 
-																										CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser, 
-																										ecm.artikel.rubrik,
-																										ecm.artikel.ort,
-																										ecm.artikel.erstellt, 
-																										ecm.artikel.veroeffentlicht, 
-																										ecm.artikel.bearbeitet 
-																						FROM ecm.artikel
-																						LEFT JOIN erp.mitarbeiter
-																						ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
-																						LEFT JOIN erp.person 
-																						ON erp.mitarbeiter.person_id = erp.person.id
-																						'.$where.' 
-																						ORDER BY '.$sort.' '.$order.'
-																						LIMIT 0,50' );												
+			$dataStatement = $this->db->prepare('	SELECT * FROM (	SELECT 	ecm.artikel.id, 
+																																		ecm.artikel.titel, 
+																																		CONCAT(erp.person.vorname, " ", erp.person.nachname) as verfasser, 
+																																		ecm.artikel.rubrik,
+																																		ecm.artikel.ort,
+																																		ecm.artikel.erstellt, 
+																																		ecm.artikel.veroeffentlicht, 
+																																		ecm.artikel.bearbeitet 
+																														FROM ecm.artikel
+																														LEFT JOIN erp.mitarbeiter
+																														ON ecm.artikel.verfasser_id = erp.mitarbeiter.id
+																														LEFT JOIN erp.person 
+																														ON erp.mitarbeiter.person_id = erp.person.id
+																														 '.$condition1.' 
+																														LIMIT 0,50) T 
+																														 '.$condition2.' 
+																														ORDER BY '.$sort.' '.$order.'
+																														');												
 																						
 			$dataStatement->execute(array());
 			

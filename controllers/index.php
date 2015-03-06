@@ -8,7 +8,7 @@ class Index extends Controller {
 		Session::set("loggedIn", true);
 		Session::set("user_id", 1);
 		if(Session::get("loggedIn") != true){
-		//	header('location:http://lvps87-230-14-183.dedicated.hosteurope.de/login');
+			header('location:http://lvps87-230-14-183.dedicated.hosteurope.de/login');
 		}
 	}
 	
