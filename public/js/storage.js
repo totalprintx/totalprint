@@ -38,10 +38,10 @@ function handleRowClick(){
 							fileList.html("");
 							$.each(resultData, function(){
 								if(firstLink){
-									fileList.append('<li><a href="http://localhost/tp_storage/' + this['id'] + '" download="' + row['Titel'] + '.' + row['Dateityp'] + '"><b>' + row['Titel'] + '</b></a></li>');
+									fileList.append('<li><a href="../tp_storage/' + this['id'] + '" download="' + row['Titel'] + '.' + row['Dateityp'] + '"><b>' + row['Titel'] + '</b></a></li>');
 									firstLink = false;
 								}else{
-									fileList.append('<li><a href="http://localhost/tp_storage/' + this['id'] + '" download="' + row['Titel'] + '.' + row['Dateityp'] + '">' + this['upload_date'] + '</a></li>');
+									fileList.append('<li><a href="../tp_storage/' + this['id'] + '" download="' + row['Titel'] + '.' + row['Dateityp'] + '">' + this['upload_date'] + '</a></li>');
 								}
 								
 							});
