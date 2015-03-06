@@ -12,7 +12,7 @@ $(document).ready(function() {
 	$("#chooser_myArticles").click(function() {
 		$("#dg_articles").datagrid({method:"GET",
 																queryParams: {
-																	verfasser_id: 1,
+																	verfasser_id: 0,
 																	searchColumn: "",
 																	searchTerm: ""
 																}});
@@ -33,7 +33,7 @@ $(document).ready(function() {
 			$("#btn_search").trigger("click");
 			return false;
 		}
-    });
+   });
 	
 	$("#btn_search").click(function() {
 		greyOutChooser();
