@@ -9,90 +9,86 @@
 <link rel="stylesheet" type="text/css" href="public/MarkItUp/markitup/sets/default/style.css" />
 
 <form action="articles/saveArticle" method="post" enctype="multipart/form-data">
-    <div id="popup">
-    
-        <div class="schliessen">X</div>
-        
-        <div id="popup_inhalt">
-            <h2 align="center">Artikel erstellen</h2>
-   			
-                <div class="row">
-                    <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%; margin-bottom: 2px;"></div>
-                    
-                    <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%; margin-bottom: 2px;"></div>
+	<div id="popup">
+		<div id="popup_inhalt">
+			<div class="schliessen" style="padding-top:4px">X</div>
+			
+				<h2 align="center">Artikel erstellen</h2>
+					<div class="row">
+						<div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
+						<div class="col-sm-9 col-md-6 col-lg-8"><input name="titel" type="text" style="width:100%; margin-bottom: 2px;"></div>
+						
+						<div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
+						<div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="rubrik" type="text" style="width:100%; margin-bottom: 2px;"></div>
+						<div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
+						<div class="col-sm-9 col-md-6 col-lg-8"><input name="rubrik" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Ort des Geschehens</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="ort" type="text" style="width:100%; margin-bottom: 2px;"></div>
+						<div class="col-sm-3 col-md-6 col-lg-4">Ort des Geschehens</div>
+						<div class="col-sm-9 col-md-6 col-lg-8"><input name="ort" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp" name="text"></textarea></div>
+						<div class="col-sm-3 col-md-6 col-lg-4">Text</div>
+						<div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp" name="text"></textarea></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8">
-                        <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
-                        <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile2" type="file" id="userfile2" style="margin-bottom: 2px;"> 
-                        <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile3" type="file" id="userfile3">
-                    </div>
-                </div>
-                <br>
-                <div  style="text-align:center;">
-                    <button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
-                    <button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
-                </div>
-        </div>
-    </div>
+						<div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
+						<div class="col-sm-9 col-md-6 col-lg-8">
+							<input type="hidden" name="max_file_size" value="1000000">
+							<input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
+							<input type="hidden" name="max_file_size" value="1000000">
+							<input name="userfile2" type="file" id="userfile2" style="margin-bottom: 2px;"> 
+							<input type="hidden" name="max_file_size" value="1000000">
+							<input name="userfile3" type="file" id="userfile3">
+						</div>
+					</div>
+					</br>
+					<div style="text-align:center;">
+						<button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
+						<button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
+					</div>
+		</div>
+	</div>
 </form>
 
 
-<form action="articles/editArticle" method="post" enctype="multipart/form-data">
-    <div id="popup_edit">
-    
-        <div class="schliessen_edit">X</div>
-        
-        <div id="popup_inhalt_edit">
-            <h2 align="center">Artikel bearbeiten</h2>
-   			
-                <div class="row">
-                    <div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="titel_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
-                    
-                    <div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="verfasser_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+<form action="articles/saveArticle" method="post" enctype="multipart/form-data">
+	<div id="popup_edit">
+		<div id="popup_inhalt_edit">
+			<div class="schliessen_edit" style="padding-top:4px">X</div>
+			<h2 align="center">Artikel bearbeiten</h2>
+		
+			<div class="row">
+				<div class="col-sm-3 col-md-6 col-lg-4">Titel</div>
+				<div class="col-sm-9 col-md-6 col-lg-8"><input id="titel_edit" name="titel_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+				
+				<div class="col-sm-3 col-md-6 col-lg-4">Verfasser</div>
+				<div class="col-sm-9 col-md-6 col-lg-8"><input id="verfasser_edit" name="verfasser_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="rubrik_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+				<div class="col-sm-3 col-md-6 col-lg-4">Rubrik</div>
+				<div class="col-sm-9 col-md-6 col-lg-8"><input id="rubrik_edit" name="rubrik_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Ort des Geschehens</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><input name="ort_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
+				<div class="col-sm-3 col-md-6 col-lg-4">Ort des Geschehens</div>
+				<div class="col-sm-9 col-md-6 col-lg-8"><input id="ort_edit" name="ort_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp2" name="text"></textarea></div>
+				<div class="col-sm-3 col-md-6 col-lg-4">Text</div>
+				<div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp2" name="text"></textarea></div>
 
-                    <div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
-                    <div class="col-sm-9 col-md-6 col-lg-8">
-                        <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
-                        <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile2" type="file" id="userfile2" style="margin-bottom: 2px;"> 
-                        <input type="hidden" name="max_file_size" value="1000000">
-                        <input name="userfile3" type="file" id="userfile3">
-                    </div>
-                </div>
-                <br>
-                <div  style="text-align:center;">
-                    <button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
-                    <button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
-                </div>
-        </div>
-    </div>
+				<div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
+				<div class="col-sm-9 col-md-6 col-lg-8">
+					<input type="hidden" name="max_file_size" value="1000000">
+					<input name="userfile1" type="file" id="userfile1" style="margin-bottom: 2px;">
+					<input type="hidden" name="max_file_size" value="1000000">
+					<input name="userfile2" type="file" id="userfile2" style="margin-bottom: 2px;"> 
+					<input type="hidden" name="max_file_size" value="1000000">
+					<input name="userfile3" type="file" id="userfile3">
+				</div>
+			</div>
+			</br>
+			<div style="text-align:center;">
+				<button type="submit" id="publish_article" name="action_type" value="publish_article">ver&ouml;ffentlichen</button>
+				<button type="submit" id="save_article" name="action_type" value="save_article">speichern</button>
+			</div>
+		</div>
+	</div>
 </form>
 
 
@@ -136,7 +132,7 @@
 			<div class="col-md-8">
 				<div class="input-group" style='width:100%;float:right'>
 					<form enctype="multipart/form-data" class="input-group">
-						<select id="select_column" class="form-control" style="width:20%;height:34px;float:right">
+						<select id="select_column" class="form-control" style="width:20%;height:34px;float:right;z-index:0;">
 							<option value="id">Nr.</option>
 							<option value="titel" selected="selected">Titel</option>
 							<option value="verfasser">Verf.</option>
@@ -146,7 +142,7 @@
 							<option value="veroeffentlicht">Veröffentlicht</option>
 							<option value="bearbeitet">Zuletzt bearbeitet</option>
 						</select>
-						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right" class="form-control" placeholder="Durchsuchen..." onFocus="this.value=''">
+						<input name="searchbox" id="searchbox" style="width:50%;height:34px;float:right;z-index:0;" class="form-control" placeholder="Durchsuchen..." onFocus="this.value=''">
 						<span class="input-group-btn">
 							<a id="btn_search" class="btn btn-default" style="width:50px;height:34px">Go!</a>
 						</span>
@@ -158,20 +154,20 @@
 		<table 	id="dg_articles" 
 						class="easyui-datagrid" 
 						style="width:100%"
-						url="articles/loadNewestArticles"
+						url="articles/loadArticles"
 						method="get"
 						rownumbers="false" pagination="false"
 						singleSelect="true">
       <thead>
 				<tr>
-					<th field="id" width="5%" sortable="true">Nr.</th>
-					<th field="titel" width="20%" sortable="true">Titel</th>
-					<th field="verfasser" width="15%" sortable="true">Verfasser</th>
-					<th field="rubrik" width="10%" sortable="true">Rubrik</th>
-					<th field="ort" width="10%" sortable="true">Ort</th>
-					<th field="erstellt" width="14%" sortable="true">Erstellt</th>
+					<th field="id" width="5%" 							sortable="true">Nr.</th>
+					<th field="titel" width="20%" 					sortable="true">Titel</th>
+					<th field="verfasser" width="15%" 			sortable="true">Verfasser</th>
+					<th field="rubrik" width="10%" 					sortable="true">Rubrik</th>
+					<th field="ort" width="10%" 						sortable="true">Ort</th>
+					<th field="erstellt" width="14%" 				sortable="true">Erstellt</th>
 					<th field="veroeffentlicht" width="14%" sortable="true">Veröffentlicht</th>
-					<th field="bearbeitet" width="14%" sortable="true">Zuletzt bearbeitet</th>
+					<th field="bearbeitet" width="14%" 			sortable="true">Zuletzt bearbeitet</th>
 				</tr>
 			</thead>			
 		</table>

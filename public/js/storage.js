@@ -17,6 +17,23 @@ function handleRowClick(){
 		var firstLink = true;
 		fileList = $('#fileHistory');
 		fileList.html('<center><li><img src="res/loader.gif"/></li></center>');
+
+		/*if(selectedDirID == null) {
+			for(value in dirMap) {
+				if(value == row['Kategorie']) {
+					selectedDirID = key;
+				}
+			}
+		}*/
+	if(selectedDirID == null)
+		var it = dirMap.values();
+		var entry = row['Kategorie'];
+
+		while (!(entry == it.next()).done) {
+    		console.log(entry.key);
+		}
+	}
+
 		if (row){
 			$.ajax({
 				type: "GET",

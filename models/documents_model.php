@@ -6,19 +6,21 @@
 			$statement = $this->db->prepare('SELECT s.id as Nr, 
 													s.title as Titel, 
 													s.file_ext as Dateityp, 
-													c.title as Kategorie, 
+													d.title as Kategorie, 
 													s.author_id as Ersteller, 
 													s.upload_date as Erstellungsdatum 
 											FROM 	storage s,
-												 	category c 
-											WHERE 	s.category_id = c.category_id 
+												 	directories d 
+											WHERE 	s.category_id = d.dir_id 
 											AND 	(s.title LIKE :searchterm1
-											OR 		c.title LIKE :searchterm2) 
+											OR 		d.title LIKE :searchterm2
+											OR 		s.upload_date LIKE :searchterm3) 
 											order by upload_date ASC');
 
 			$statement->execute(array(
 										':searchterm1' => "%".$data['searchTerm']."%",
 										':searchterm2' => "%".$data['searchTerm']."%",
+										':searchterm3' => "%".$data['searchTerm']."%",
 									));
 			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 			return json_encode($rows);

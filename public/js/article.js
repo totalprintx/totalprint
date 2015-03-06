@@ -10,49 +10,22 @@ $(document).ready(function() {
 	});
 	
 	$("#chooser_myArticles").click(function() {
-		$("#dg_articles").datagrid({url:"articles/loadMyArticles"});
+		$("#dg_articles").datagrid({method:"GET",
+																queryParams: {
+																	verfasser_id: 0,
+																	searchColumn: "",
+																	searchTerm: ""
+																}});
 	});
 	
 	$("#chooser_newestArticles").click(function() {
-		$("#dg_articles").datagrid({url:"articles/loadNewestArticles"});
+		$("#dg_articles").datagrid({method:"GET",
+																queryParams: {
+																	verfasser_id: -1,
+																	searchColumn: "",
+																	searchTerm: ""
+																}});
 	});
-	
-	$("#btn_article_edit").click(function() {
-		var row = $('#dg_articles').datagrid('getSelected');
-		if(row == null)
-			alert("Es wurde kein Artikel zum Bearbeiten ausgewählt.");
-		var articleId = row.id;
-	
-		var data = {
-			'id' : articleId
-		}
-		
-		$.ajax({
-			type: "GET",
-			url: "articles/loadArticle",
-			data: data,
-			success: function(resultDataJson) {
-				var resultData = JSON.parse(resultDataJson);
-				alert(resultData['titel']);
-			}
-
-		});
-	});
-	
-	/*$("#btn_picture_upload").click(function() {
-		alert('js works');
-		$.ajax({
-				type: "POST",
-				url: "articles/uploadPicture",
-				dataType: 'json',
-				data: "",
-				success: function(resultData) {
-					alert("Marcel ist fett");
-				}
-
-			});
-	});
-	*/
 	
 	$("#searchbox").keypress(function(event){
 		if(event.keyCode == 10 || event.keyCode == 13) {
@@ -60,7 +33,7 @@ $(document).ready(function() {
 			$("#btn_search").trigger("click");
 			return false;
 		}
-    });
+   });
 	
 	$("#btn_search").click(function() {
 		greyOutChooser();
@@ -68,12 +41,12 @@ $(document).ready(function() {
 		var column = document.getElementById('select_column').value;
 		var search = document.getElementById('searchbox').value;
 		
-		$("#dg_articles").datagrid({method:"POST",
+		$("#dg_articles").datagrid({method:"GET",
 																queryParams: {
+																	verfasser_id: -1,
 																	searchColumn: column,
 																	searchTerm: search
-																},
-																url:"articles/searchArticles"});
+																}});
 	});
 });
 

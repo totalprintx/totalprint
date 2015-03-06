@@ -4,6 +4,10 @@ class Articles extends Controller {
 
 	function __construct() {
 		parent::__construct();
+		Session::init();
+		if(Session::get("loggedIn") == false){
+			header('location:http://lvps87-230-14-183.dedicated.hosteurope.de/login');
+		}
 	}
 	
 	function index() {
@@ -19,24 +23,18 @@ class Articles extends Controller {
 		header('Location: ' . URL . 'articles');
 	}
 	
-	function loadArticle() {
-		echo $this->model->loadArticle($_GET);
-	}
-	
 	function saveArticle() {
 		$this->model->saveArticle($_POST);
 		header('Location: ' . URL . 'articles');
 	}
 
-	function loadMyArticles() {
-		echo $this->model->loadMyArticles(Session::get("id"));
+	function loadArticle() {
+		echo $this->model->loadArticle($_GET);
 	}
 	
-	function loadNewestArticles() {
-		echo $this->model->loadNewestArticles();
-	}
-	
-	function searchArticles() {
-		echo $this->model->searchArticles($_POST);
+	function loadArticles() {
+		if(isset($_GET['verfasser_id']) && $_GET['verfasser_id'] == 0)
+			$_GET['verfasser_id'] = Session::get('user_id');
+		echo $this->model->loadArticles($_GET);
 	}
 }

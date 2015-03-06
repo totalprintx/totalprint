@@ -59,6 +59,14 @@
         		<div class="panel-body">
                 <center>
         			<form action="documents/uploadFiles" method="post" enctype="multipart/form-data">
+                        <ul id="filesToUpload">
+                        </ul>
+                            
+                            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                                <div class="fileUpload btn btn-primary">
+                                    <span>Datei auswählen</span>
+                                    <input id="uploadBtn" type="file" class="upload" />
+                                </div>
                         <input type="file" id="filesToUpload" name="filesToUpload[]" multiple="multiple"/>
                         
                         <br/>Zielverzeichnis:<br/>
