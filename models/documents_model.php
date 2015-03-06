@@ -40,7 +40,7 @@
 		}
 
 		function fillDataGrid($dirId){
-			$statement = $this->db->prepare('SELECT 
+			$statement = $this->db->prepare('SELECT DISTINCT
 											s.id as Nr, 
 											s.title as Titel, 
 											s.file_ext as Dateityp, 
@@ -49,7 +49,8 @@
 											s.upload_date as Erstellungsdatum 
 								 			FROM storage s INNER JOIN directories d ON s.category_id = d.dir_id
 								 			WHERE s.category_id = :dirId
-											order by upload_date ASC');
+								 			GROUP BY Titel
+											ORDER BY upload_date ASC');
 
 			$statement->execute(array(
 										':dirId' => $dirId,
