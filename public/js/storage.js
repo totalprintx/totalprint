@@ -18,21 +18,14 @@ function handleRowClick(){
 		fileList = $('#fileHistory');
 		fileList.html('<center><li><img src="res/loader.gif"/></li></center>');
 
-		/*if(selectedDirID == null) {
-			for(value in dirMap) {
-				if(value == row['Kategorie']) {
-					selectedDirID = key;
-				}
-			}
-		}*/
-	if(selectedDirID == null){
-		var it = dirMap.values();
-		var entry = row['Kategorie'];
+		if(selectedDirID == null){
 
-		while (!(entry == it.next()).done) {
-    		console.log(entry.key);
+			for(var key in dirMap)
+			{
+    			if(dirMap[key]==row['Kategorie'])
+         			selectedDirID = key;
+			}
 		}
-	}
 
 		if (row){
 			$.ajax({
