@@ -27,47 +27,6 @@ $(document).ready(function() {
 																}});
 	});
 	
-	$("#btn_article_edit").click(function() {
-		var row = $('#dg_articles').datagrid('getSelected');
-		if(row == null)
-			alert("Es wurde kein Artikel zum Bearbeiten ausgewählt.");
-		var articleId = row.id;
-	
-		var data = {
-			'id' : articleId
-		}
-		
-		$.ajax({
-			type: "GET",
-			url: "articles/loadArticle",
-			data: data,
-			success: function(resultDataJson) {
-				var resultData = JSON.parse(resultDataJson);
-				document.getElementById('titel_edit').value = resultData['titel'];
-				document.getElementById('verfasser_edit').value = resultData['verfasser'];
-				document.getElementById('rubrik_edit').value = resultData['rubrik'];
-				document.getElementById('ort_edit').value = resultData['ort'];
-				document.getElementById('markItUp2').value = resultData['text'];
-			}
-
-		});
-	});
-	
-	/*$("#btn_picture_upload").click(function() {
-		alert('js works');
-		$.ajax({
-				type: "POST",
-				url: "articles/uploadPicture",
-				dataType: 'json',
-				data: "",
-				success: function(resultData) {
-					alert("Marcel ist fett");
-				}
-
-			});
-	});
-	*/
-	
 	$("#searchbox").keypress(function(event){
 		if(event.keyCode == 10 || event.keyCode == 13) {
 			event.preventDefault();
