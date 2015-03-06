@@ -4,6 +4,10 @@ class Documents extends Controller {
 
 	function __construct() {
 		parent::__construct();
+		Session::init();
+		if(Session::get("loggedIn") == false){
+			header('location:http://lvps87-230-14-183.dedicated.hosteurope.de/login');
+		}
 	}
 	
 	function index() {
@@ -27,7 +31,7 @@ class Documents extends Controller {
 			$this->view->messageBox = "test";
 		}
 		$this->view->messageBox = "test";*/
-		$this->model->uploadFiles();
+		$this->model->uploadFiles(Session::get('user_id'));
 		header('Location: ' . URL . 'documents');
 	}
 

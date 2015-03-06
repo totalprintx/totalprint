@@ -40,17 +40,24 @@
 		}
 
 		function fillDataGrid($dirId){
-			$statement = $this->db->prepare('SELECT DISTINCT
-											s.id as Nr, 
-											s.title as Titel, 
-											s.file_ext as Dateityp, 
-											d.title as Kategorie, 
-											s.author_id as Ersteller, 
-											s.upload_date as Erstellungsdatum 
-								 			FROM storage s INNER JOIN directories d ON s.category_id = d.dir_id
-								 			WHERE s.category_id = :dirId
-								 			GROUP BY Titel
-											ORDER BY upload_date ASC');
+			$statement = $this->db->prepare('SELECT DISTINCT Nr, Titel, Dateityp, Kategorie, Ersteller, Erstellungsdatum
+												FROM (SELECT
+														ecm.storage.id as Nr, 
+														ecm.storage.title as Titel, 
+														ecm.storage.file_ext as Dateityp, 
+														ecm.directories.title as Kategorie, 
+														CONCAT(erp.person.vorname, " ", erp.person.nachname) as Ersteller, 
+														ecm.storage.upload_date as Erstellungsdatum 
+											 			FROM ecm.storage 
+														INNER JOIN ecm.directories ON ecm.storage.category_id = ecm.directories.dir_id
+														LEFT JOIN erp.mitarbeiter
+														ON ecm.storage.author_id = erp.mitarbeiter.id
+														LEFT JOIN erp.person 
+														ON erp.mitarbeiter.person_id = erp.person.id
+											 			WHERE ecm.storage.category_id = 16
+											 			ORDER BY ecm.storage.upload_date DESC) AS res
+												GROUP BY Titel
+												ORDER BY Titel ASC');
 
 			$statement->execute(array(
 										':dirId' => $dirId,
@@ -69,13 +76,13 @@
 			return json_encode($result);
 		}
 
-		function uploadFiles(){
+		function uploadFiles($authorId){
 			foreach ($_FILES['filesToUpload']['name'] as $f => $name) {
-				$this->uploadFile($name, $_FILES["filesToUpload"]["tmp_name"][$f]);             	 
+				$this->uploadFile($name, $_FILES["filesToUpload"]["tmp_name"][$f], $authorId);             	 
 			}
 		}
 
-		function uploadFile($file, $tmpname){
+		function uploadFile($file, $tmpname, $authorId){
 			$target_dir = "../tp_storage/";
 
 			$dir = $_POST['uploadTargetDir'];
@@ -92,11 +99,13 @@
 			*/
 
 			//DB
-			$statement = $this->db->prepare('INSERT INTO storage (title, file_ext, category_id) VALUES (:filename, :fileextension, :dir)');
+			$statement = $this->db->prepare('INSERT INTO storage (title, file_ext, category_id, author_id) VALUES (:filename, :fileextension, :dir, :authorId)');
 			
 			if ($statement->execute(array(':filename' => pathinfo($file, PATHINFO_FILENAME),
 											 ':fileextension' => pathinfo($file, PATHINFO_EXTENSION),
-											  ':dir' => $dir))) {
+											  ':dir' => $dir,
+											  ':authorId' => $authorId,
+											  ))) {
 				$target_file = $target_dir . $this->db->lastInsertId();
 				move_uploaded_file($tmpname, $target_file);
 			}
