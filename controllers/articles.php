@@ -24,7 +24,12 @@ class Articles extends Controller {
 	}
 	
 	function saveArticle() {
-		$this->model->saveArticle($_POST);
+		$this->model->saveArticle($_POST, Session::get('user_id'));
+		header('Location: ' . URL . 'articles');
+	}
+
+	function updateArticle() {
+		echo $this->model->updateArticle($_POST, Session::get('user_id'));
 		header('Location: ' . URL . 'articles');
 	}
 

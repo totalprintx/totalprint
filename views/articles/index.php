@@ -50,7 +50,7 @@
 </form>
 
 
-<form action="articles/saveArticle" method="post" enctype="multipart/form-data">
+<form action="articles/updateArticle" method="post" enctype="multipart/form-data">
 	<div id="popup_edit">
 		<div id="popup_inhalt_edit">
 			<div class="schliessen_edit" style="padding-top:4px">X</div>
@@ -70,7 +70,9 @@
 				<div class="col-sm-9 col-md-6 col-lg-8"><input id="ort_edit" name="ort_edit" type="text" style="width:100%; margin-bottom: 2px;"></div>
 
 				<div class="col-sm-3 col-md-6 col-lg-4">Text</div>
-				<div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp2" name="text"></textarea></div>
+				<div class="col-sm-9 col-md-6 col-lg-8"><textarea id="markItUp2" name="text_edit"></textarea></div>
+
+				<div><input id="id" name="id" type="hidden"></div>
 
 				<div class="col-sm-3 col-md-6 col-lg-4">Bilder</div>
 				<div class="col-sm-9 col-md-6 col-lg-8">

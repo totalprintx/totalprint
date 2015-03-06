@@ -12,7 +12,7 @@
 
 		function loadArticle($data) {
 			$dataStatement = $this->db->prepare('SELECT	id, 
-				titel, 
+				titel,
 				rubrik,
 				ort,
 				erstellt, 
@@ -60,11 +60,11 @@
 			':size' => $fileSize,
 			':type' => $fileType,
 			':content' => $content,
-			':artikel_id' => $artikel_id,
+			':artikel_id' => $artikel_id
 			));
 		}
 		
-		function saveArticle($data) {
+		function saveArticle($data, $verfasser_id) {
 			$date = new DateTime();
 			$date = $date->format('Y-m-d');			
 
@@ -72,11 +72,11 @@
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht, :rubrik, :ort)');
 				$statement->execute(array(
 					':titel' => $data['titel'],
-					':verfasser_id' => '1',	//abfragen
+					':verfasser_id' => $verfasser_id,
 					':text' => $data['text'],
 					':veroeffentlicht' => $date,
 					':rubrik' => $data['rubrik'],
-					':ort' => $data['ort'],
+					':ort' => $data['ort']
 				));
 			}
 
@@ -84,11 +84,73 @@
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, bearbeitet, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :bearbeitet, :rubrik, :ort)');
 				$statement->execute(array(
 					':titel' => $data['titel'],
-					':verfasser_id' => '1',	//abfragen
+					':verfasser_id' => $verfasser_id,
 					':text' => $data['text'],
 					':bearbeitet' => $date,
 					':rubrik' => $data['rubrik'],
-					':ort' => $data['ort'],
+					':ort' => $data['ort']
+				));
+			}
+			$artikel_id = $this->db->lastInsertId();
+			
+			// picture upload 1
+			if($_FILES['userfile1']['size'] > 0) {
+				$fileName = $_FILES['userfile1']['name'];
+				$tmpName = $_FILES['userfile1']['tmp_name'];
+				$fileSize = $_FILES['userfile1']['size'];
+				$fileType = $_FILES['userfile1']['type'];
+			
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType, $artikel_id);
+			} 
+
+			// picture upload 2
+			if($_FILES['userfile2']['size'] > 0) {
+				$fileName = $_FILES['userfile2']['name'];
+				$tmpName = $_FILES['userfile2']['tmp_name'];
+				$fileSize = $_FILES['userfile2']['size'];
+				$fileType = $_FILES['userfile2']['type'];
+			
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType, $artikel_id);
+			} 
+
+			// picture upload 3
+			if($_FILES['userfile3']['size'] > 0) {
+				$fileName = $_FILES['userfile3']['name'];
+				$tmpName = $_FILES['userfile3']['tmp_name'];
+				$fileSize = $_FILES['userfile3']['size'];
+				$fileType = $_FILES['userfile3']['type'];
+				
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType, $artikel_id);
+			} 
+		}
+
+		function updateArticle($data, $verfasser_id) {
+			$date = new DateTime();
+			$date = $date->format('Y-m-d');			
+			echo $data['id'];
+			if($data['action_type'] == "publish_article") {
+				$statement = $this->db->prepare('UPDATE ecm.artikel SET titel = :titel, verfasser_id = :verfasser_id, text= :text, veroeffentlicht = :veroeffentlicht, rubrik =:rubrik, ort =:ort WHERE id = :id');
+				$statement->execute(array(
+					':titel' => $data['titel_edit'],
+					':verfasser_id' => $verfasser_id,
+					':text' => $data['text_edit'],
+					':veroeffentlicht' => $date,
+					':rubrik' => $data['rubrik_edit'],
+					':ort' => $data['ort_edit'],
+					':id' => $data['id']
+				));
+			}
+
+			if($data['action_type'] == "save_article") {
+				$statement = $this->db->prepare('UPDATE ecm.artikel SET titel = :titel, verfasser_id = :verfasser_id, text= :text, bearbeitet = :bearbeitet, rubrik =:rubrik, ort =:ort  WHERE id = :id');
+				$statement->execute(array(
+					':titel' => $data['titel_edit'],
+					':verfasser_id' => $verfasser_id,
+					':text' => $data['text_edit'],
+					':bearbeitet' => $date,
+					':rubrik' => $data['rubrik_edit'],
+					':ort' => $data['ort_edit'],
+					':id' => $data['id']
 				));
 			}
 			$artikel_id = $this->db->lastInsertId();
