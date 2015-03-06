@@ -42,4 +42,16 @@ class Documents extends Controller {
 	function deleteFile(){
 		echo $this->model->deleteFile($_GET);
 	}
+
+	function deleteDir(){
+		echo $this->model->deleteDir($_GET['dirId']);
+	}
+
+	function createDir(){
+		echo $this->model->createDir($_GET);
+	}
+
+	function renameDir(){
+		echo $this->model->renameDir($_GET);
+	}
 }

@@ -37,29 +37,6 @@
 			return json_encode($rows);
 		}
 
-		function deleteFile($data){
-			$statement = $this->db->prepare('SELECT id FROM storage WHERE title = :fileName AND file_ext = :fileExt AND category_id = :dirId ORDER BY upload_date DESC');
-
-			$statement->execute(array(
-										':fileName' => $data['fileName'],
-										':fileExt' => $data['fileExt'],
-										':dirId' => $data['dirId'],
-									));
-			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-			foreach ($rows as $row) {
-				$id = $row['id'];
-				$statement = $this->db->prepare('DELETE FROM storage WHERE id = :fileId');
-				$statement->execute(array(
-										':fileId' => $id,
-									));
-
-				unlink("../tp_storage/" . $id);
-			}
-
-			return json_encode(true);
-		}
-
 		function fillDataGrid($dirId){
 			$statement = $this->db->prepare('SELECT 
 											s.id as Nr, 
@@ -121,4 +98,111 @@
 				move_uploaded_file($tmpname, $target_file);
 			}
 		}
+
+		function deleteFile($data){
+			$statement = $this->db->prepare('SELECT id FROM storage WHERE title = :fileName AND file_ext = :fileExt AND category_id = :dirId');
+
+			$statement->execute(array(
+										':fileName' => $data['fileName'],
+										':fileExt' => $data['fileExt'],
+										':dirId' => $data['dirId'],
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ($rows as $row) {
+				$id = $row['id'];
+				$statement = $this->db->prepare('DELETE FROM storage WHERE id = :fileId');
+				$statement->execute(array(
+										':fileId' => $id,
+									));
+
+				unlink("../tp_storage/" . $id);
+			}
+
+			return json_encode(true);
+		}
+
+		function deleteDir($dirId){
+			//file db drop - unlink
+			$statement = $this->db->prepare('SELECT id FROM storage WHERE category_id = :dirId');
+
+			$statement->execute(array(
+										':dirId' => $dirId,
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+			if($rows){
+				foreach ($rows as $row) {
+					unlink("../tp_storage/" . $row['id']);
+				}
+			}
+
+			$statement = $this->db->prepare('DELETE FROM storage WHERE category_id = :dirId');
+			$statement->execute(array(
+										':dirId' => $dirId,
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+			//child dir parent = parent
+			$statement = $this->db->prepare('SELECT parent_id FROM directories WHERE dir_id = :dirId');
+
+			$statement->execute(array(
+										':dirId' => $dirId,
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+			$parentId = $rows[0]['parent_id'];
+			
+			$statement = $this->db->prepare('UPDATE directories SET parent_id = :parentId WHERE parent_id = :dirId');
+
+			$statement->execute(array(
+										':parentId' => $parentId,
+										':dirId' => $dirId,
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+			//dir drop
+			$statement = $this->db->prepare('DELETE FROM directories WHERE dir_id = :dirId');
+
+			$statement->execute(array(
+										':dirId' => $dirId,
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+			return json_encode(true);
+		}
+
+		function createDir($data){
+			if(isset($data['parentId'])){
+				$statement = $this->db->prepare('INSERT INTO directories (title, parent_id) VALUES (:dirName, :parentId)');
+
+				$statement->execute(array(
+											':dirName' => $data['dirName'],
+											':parentId' => $data['parentId'],
+										));
+				$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+			}else{
+				$statement = $this->db->prepare('INSERT INTO directories (title) VALUES (:dirName)');
+
+				$statement->execute(array(
+											':dirName' => $data['dirName'],
+										));
+				$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+			}
+
+			return json_encode($rows);
+		}
+
+		function renameDir($data){
+
+			$statement = $this->db->prepare('UPDATE directories SET title = :dirName WHERE dir_id = :dirId');
+
+			$statement->execute(array(
+										':dirName' => $data['dirName'],
+										':dirId' => $data['dirId'],
+									));
+			$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+			return json_encode($rows);
+		}
+
 	}

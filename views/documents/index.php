@@ -86,9 +86,8 @@
                 <div class="panel-body">
                     <ul style="padding: 5px">
                         <li><a href="#" onclick="deleteFile();return false;">Datei Löschen</a></li>
-                        <li><a href="#">Datei verschieben</a></li>
-                        <li><a href="#">Neues Verzeichnis erstellen</a></li>
-                        <li><a href="#">Verzeichnis verschieben</a></li>
+                        <li><a href="#" onclick="createDir();return false;">Neues Verzeichnis erstellen</a></li>
+                        <li><a href="#" onclick="renameDir();return false;">Verzeichnis umbenennen</a></li>
                         <li><a href="#" onclick="deleteDir();return false;">Verzeichnis löschen</a></li>
                     </ul>
                 </div>
