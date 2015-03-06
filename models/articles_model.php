@@ -31,7 +31,7 @@
 			return json_encode($rows[0]);
 		}
 		
-		function pictureupload($fileName, $tmpName, $fileSize, $fileType) {
+		function pictureupload($fileName, $tmpName, $fileSize, $fileType, $artikel_id) {
 			$fp = fopen($tmpName, 'r');
 			$content = fread($fp, filesize($tmpName));
 			$content = addslashes($content);
@@ -41,20 +41,20 @@
 				$fileName = addslashes($fileName);
 			}
 		
-			$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+			$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content, artikel_id) VALUE (:name, :size, :type, :content, :artikel_id)');
 			$statement->execute(array(
 			':name' => $fileName,
 			':size' => $fileSize,
 			':type' => $fileType,
 			':content' => $content,
+			':artikel_id' => $artikel_id,
 			));
 		}
 		
 		function saveArticle($data) {
 			$date = new DateTime();
-			$date = $date->format('Y-m-d');
-			var_dump("expression articles_model");
-			
+			$date = $date->format('Y-m-d');			
+
 			if($data['action_type'] == "publish_article") {
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht, :rubrik, :ort)');
 				$statement->execute(array(
@@ -78,7 +78,8 @@
 					':ort' => $data['ort'],
 				));
 			}
-
+			$artikel_id = $this->db->lastInsertId();
+			
 			// picture upload 1
 			var_dump($_FILES['userfile1']['size']);
 			if($_FILES['userfile1']['size'] > 0) {
@@ -87,7 +88,7 @@
 				$fileSize = $_FILES['userfile1']['size'];
 				$fileType = $_FILES['userfile1']['type'];
 			
-				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType);
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType, $artikel_id);
 			} 
 
 			// picture upload 2
@@ -97,7 +98,7 @@
 				$fileSize = $_FILES['userfile2']['size'];
 				$fileType = $_FILES['userfile2']['type'];
 			
-				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType);
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType, $artikel_id);
 			} 
 
 			// picture upload 3
@@ -107,7 +108,7 @@
 				$fileSize = $_FILES['userfile3']['size'];
 				$fileType = $_FILES['userfile3']['type'];
 				
-				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType);
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType, $artikel_id);
 			} 
 		}
 
