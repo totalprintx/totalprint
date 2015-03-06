@@ -66,7 +66,7 @@
                             
                             <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
                                 <div class="fileUpload btn btn-primary">
-                                    <span class="uploadBtn">Datei auswählen</span>
+                                    <span>Datei auswählen</span>
                                     <input id="uploadBtn" type="file" class="upload" />
                                 </div>
 >>>>>>> 6785bc232622400b34ce415f6ae01d6e472ed54b

@@ -31,10 +31,30 @@
 			return json_encode($rows[0]);
 		}
 		
+		function pictureupload($fileName, $tmpName, $fileSize, $fileType) {
+			$fp = fopen($tmpName, 'r');
+			$content = fread($fp, filesize($tmpName));
+			$content = addslashes($content);
+			fclose($fp);
+		
+			if(!get_magic_quotes_gpc()) {
+				$fileName = addslashes($fileName);
+			}
+		
+			$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
+			$statement->execute(array(
+			':name' => $fileName,
+			':size' => $fileSize,
+			':type' => $fileType,
+			':content' => $content,
+			));
+		}
+		
 		function saveArticle($data) {
 			$date = new DateTime();
 			$date = $date->format('Y-m-d');
 			var_dump("expression articles_model");
+			
 			if($data['action_type'] == "publish_article") {
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, veroeffentlicht, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :veroeffentlicht, :rubrik, :ort)');
 				$statement->execute(array(
@@ -46,6 +66,7 @@
 					':ort' => $data['ort'],
 				));
 			}
+
 			if($data['action_type'] == "save_article") {
 				$statement = $this->db->prepare('INSERT INTO artikel (titel, verfasser_id, text, bearbeitet, rubrik, ort) VALUE (:titel, :verfasser_id, :text, :bearbeitet, :rubrik, :ort)');
 				$statement->execute(array(
@@ -57,6 +78,7 @@
 					':ort' => $data['ort'],
 				));
 			}
+
 			// picture upload 1
 			var_dump($_FILES['userfile1']['size']);
 			if($_FILES['userfile1']['size'] > 0) {
@@ -65,24 +87,9 @@
 				$fileSize = $_FILES['userfile1']['size'];
 				$fileType = $_FILES['userfile1']['type'];
 			
-				$fp = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-			
-				if(!get_magic_quotes_gpc())
-				{
-				$fileName = addslashes($fileName);
-				}
-			
-				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
-				$statement->execute(array(
-				':name' => $fileName,
-				':size' => $fileSize,
-				':type' => $fileType,
-				':content' => $content,
-				));
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType);
 			} 
+
 			// picture upload 2
 			if($_FILES['userfile2']['size'] > 0) {
 				$fileName = $_FILES['userfile2']['name'];
@@ -90,23 +97,7 @@
 				$fileSize = $_FILES['userfile2']['size'];
 				$fileType = $_FILES['userfile2']['type'];
 			
-				$fp = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-			
-				if(!get_magic_quotes_gpc())
-				{
-				$fileName = addslashes($fileName);
-				}
-			
-				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
-				$statement->execute(array(
-				':name' => $fileName,
-				':size' => $fileSize,
-				':type' => $fileType,
-				':content' => $content,
-				));
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType);
 			} 
 
 			// picture upload 3
@@ -115,26 +106,11 @@
 				$tmpName = $_FILES['userfile3']['tmp_name'];
 				$fileSize = $_FILES['userfile3']['size'];
 				$fileType = $_FILES['userfile3']['type'];
-			
-				$fp = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-			
-				if(!get_magic_quotes_gpc())
-				{
-				$fileName = addslashes($fileName);
-				}
-			
-				$statement = $this->db->prepare('INSERT INTO bild (name, size, type, content) VALUE (:name, :size, :type, :content)');
-				$statement->execute(array(
-				':name' => $fileName,
-				':size' => $fileSize,
-				':type' => $fileType,
-				':content' => $content,
-				));
+				
+				$this->pictureupload ($fileName, $tmpName, $fileSize, $fileType);
 			} 
 		}
+
 
 		
 		function loadArticles($data) {
