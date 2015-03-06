@@ -25,7 +25,7 @@ function handleRowClick(){
 				}
 			}
 		}*/
-	if(selectedDirID == null)
+	if(selectedDirID == null){
 		var it = dirMap.values();
 		var entry = row['Kategorie'];
 
