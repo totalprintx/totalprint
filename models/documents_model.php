@@ -54,7 +54,7 @@
 														ON ecm.storage.author_id = erp.mitarbeiter.id
 														LEFT JOIN erp.person 
 														ON erp.mitarbeiter.person_id = erp.person.id
-											 			WHERE ecm.storage.category_id = 16
+											 			WHERE ecm.storage.category_id = :dirId
 											 			ORDER BY ecm.storage.upload_date DESC) AS res
 												GROUP BY Titel
 												ORDER BY Titel ASC');
