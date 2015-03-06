@@ -167,4 +167,14 @@
 			
 			return json_encode($data);
 		}
+
+		function getStaff() {
+			$dataStatement = $this->db->prepare('SELECT	name FROM ecm.bild WHERE artikel_id = :id');
+			
+			$dataStatement->execute(array());
+			
+			$data = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
+			
+			return json_encode($data);
+		}
 	}

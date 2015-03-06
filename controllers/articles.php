@@ -41,4 +41,8 @@ class Articles extends Controller {
 			$_GET['verfasser_id'] = Session::get('user_id');
 		echo $this->model->loadArticles($_GET);
 	}
+
+	function getStaff() {
+		echo $this->model->getStaff($_GET);
+	}
 }
