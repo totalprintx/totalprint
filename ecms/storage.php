@@ -44,7 +44,15 @@ ON Orders.CustomerID=Customers.CustomerID; */
 		echo "<br/>";
 		$x++;
 	}										
-	echo "<br/><br/>" + $x;
+	echo "<br/><br/>" . $x;
+
+
+	$sql = "SELECT parent_id FROM directories WHERE dir_id = 1";
+	$result = mysqli_query($con, $sql);
+	
+	echo "<hr/>";
+	print_r($result);
+	echo "<hr/>";
 ?>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">

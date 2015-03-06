@@ -17,6 +17,23 @@ function handleRowClick(){
 		var firstLink = true;
 		fileList = $('#fileHistory');
 		fileList.html('<center><li><img src="res/loader.gif"/></li></center>');
+
+		/*if(selectedDirID == null) {
+			for(value in dirMap) {
+				if(value == row['Kategorie']) {
+					selectedDirID = key;
+				}
+			}
+		}*/
+	if(selectedDirID == null){
+		var it = dirMap.values();
+		var entry = row['Kategorie'];
+
+		while (!(entry == it.next()).done) {
+    		console.log(entry.key);
+		}
+	}
+
 		if (row){
 			$.ajax({
 				type: "GET",
@@ -167,5 +184,51 @@ function deleteFile(){
 }
 
 function deleteDir(){
-	alert("Verzeichnis " + dirMap[selectedDirID] + " löschen?");
+	if(confirm("Verzeichnis " + dirMap[selectedDirID] + " und Inhalt löschen? (Unterordner bleiben erhalten)")){
+		$.ajax({
+				type: "GET",
+				url: "documents/deleteDir",
+				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
+				dataType: 'json',
+				data: {dirId:selectedDirID},
+				success: function(resultData) {
+						window.location.reload();
+					}
+
+			});
+	}
+}
+
+function createDir(){
+	var dirName = prompt("Verzeichnis erstellen");
+	if (dirName != null) {
+		$.ajax({
+				type: "GET",
+				url: "documents/createDir",
+				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
+				dataType: 'json',
+				data: {dirName:dirName, parentId: selectedDirID},
+				success: function(resultData) {
+						window.location.reload();	
+					}
+
+			});
+	}
+}
+
+function renameDir(){
+	var dirName = prompt("Verzeichnis umbenennen", dirMap[selectedDirID]);
+	if (dirName != null) {
+		$.ajax({
+				type: "GET",
+				url: "documents/renameDir",
+				// url: "http://www.carteam.lvps87-230-14-183.dedicated.hosteurope.de/communities.php",
+				dataType: 'json',
+				data: {dirName:dirName, dirId: selectedDirID},
+				success: function(resultData) {
+						window.location.reload();	
+					}
+
+			});
+	}
 }

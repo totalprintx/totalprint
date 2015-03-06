@@ -59,18 +59,6 @@
         		<div class="panel-body">
                 <center>
         			<form action="documents/uploadFiles" method="post" enctype="multipart/form-data">
-<<<<<<< HEAD
-=======
-                        <ul id="filesToUpload">
-                        </ul>
-                            
-                            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
-                                <div class="fileUpload btn btn-primary">
-                                    <span>Datei auswählen</span>
-                                    <input id="uploadBtn" type="file" class="upload" />
-                                </div>
->>>>>>> 6785bc232622400b34ce415f6ae01d6e472ed54b
-
                         <input type="file" id="filesToUpload" name="filesToUpload[]" multiple="multiple"/>
                         
                         <br/>Zielverzeichnis:<br/>
@@ -98,9 +86,8 @@
                 <div class="panel-body">
                     <ul style="padding: 5px">
                         <li><a href="#" onclick="deleteFile();return false;">Datei Löschen</a></li>
-                        <li><a href="#">Datei verschieben</a></li>
-                        <li><a href="#">Neues Verzeichnis erstellen</a></li>
-                        <li><a href="#">Verzeichnis verschieben</a></li>
+                        <li><a href="#" onclick="createDir();return false;">Neues Verzeichnis erstellen</a></li>
+                        <li><a href="#" onclick="renameDir();return false;">Verzeichnis umbenennen</a></li>
                         <li><a href="#" onclick="deleteDir();return false;">Verzeichnis löschen</a></li>
                     </ul>
                 </div>

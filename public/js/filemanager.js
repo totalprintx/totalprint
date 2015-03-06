@@ -5,7 +5,11 @@ $(document).ready(function(){
 
 		var search = document.getElementById('searchbox').value;
 
-		$("#dg_documents").datagrid({method:"POST",
+		$("#dg_documents").datagrid({							onClickRow:function(){
+																	handleRowClick();
+																},
+
+																method:"POST",
 																queryParams: {
 																	searchTerm: search
 																},
@@ -16,7 +20,7 @@ $(document).ready(function(){
 	$("#searchbox").keypress(function(event){
 		if(event.keyCode == 10 || event.keyCode == 13) {
 			event.preventDefault();
-			$("#btn_search").trigger("click");
+			$("#submitsearch").trigger("click");
 			return false;
 		}
   });
