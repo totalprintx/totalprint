@@ -87,7 +87,6 @@ function toggleDir(id){
 function loadFiles(id){
 	selectedDirID = id;
 	checkSelectedDir();
-	alert("fileload for " + id);
 	$("#dg_documents").datagrid({
 
 									onClickRow:function(){
@@ -171,8 +170,6 @@ function deleteFile(){
 					}
 
 			});
-	}else{
-		alert("abgebrochen");
 	}
 }
 
